@@ -1,19 +1,20 @@
 .header {
-	height: 50px;
+  height: 50px;
 }
 
 #logo {
-	width: 100px;
-	padding: 20px 0 0 40px;
+  width: 100px;
+  padding: 20px 0 0 40px;
 }
 
 #login {
-	padding: 20px 40px 0 0;
-	float: right;
+  padding: 20px 40px 0 0;
+  float: right;
 }
 
-#login_link {
-	text-decoration: none;
-	color: black;
-	font-weight: 700;
+a {
+  /* move to under #login when we add scss */
+  text-decoration: none;
+  color: black;
+  font-weight: 700;
 }
