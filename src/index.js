@@ -4,8 +4,9 @@ import { Provider } from "react-redux";
 import { Route } from "react-router";
 import { ConnectedRouter } from "react-router-redux";
 import store, { history } from "./store/store";
-import App from "./components/App";
+import App from "./containers/index.js";
 import Login from "./components/Login/login";
+
 
 import "./index.css";
 
