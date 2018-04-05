@@ -1,19 +1,22 @@
-import React from 'react'
-import { render } from 'react-dom'
-import { Provider } from 'react-redux'
-import { ConnectedRouter } from 'react-router-redux'
-import store, { history } from './store/store'
-import App from './components/App'
+import React from "react";
+import { render } from "react-dom";
+import { Provider } from "react-redux";
+import { Route } from "react-router";
+import { ConnectedRouter } from "react-router-redux";
+import store, { history } from "./store/store";
+import App from "./components/App";
+import Login from "./components/Login/login";
 
-import './index.css'
+import "./index.css";
 
-const target = document.querySelector('#root');
+const target = document.querySelector("#root");
 
 render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <div>
-        <App />
+        <Route exact path="/" component={App} />
+        <Route path="/login" component={Login} />
       </div>
     </ConnectedRouter>
   </Provider>,
