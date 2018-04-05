@@ -3,8 +3,7 @@ import { render } from "react-dom";
 import { Provider } from "react-redux";
 import { ConnectedRouter } from "react-router-redux";
 import store, { history } from "./store/store";
-import App from "./containers/index.js";
-
+import App from "./containers/app.js";
 import "./index.css";
 
 const target = document.querySelector("#root");

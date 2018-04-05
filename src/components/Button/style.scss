@@ -1,0 +1,17 @@
+.btn {
+	color: white;
+	height: 40px;
+	border-width: 0;
+	text-transform: uppercase;
+	font-size: 9px;
+	font-weight: 600;
+	padding: 0 15px 0 15px;
+
+	&-primary {
+		background-color: #7c4dff; 
+	}
+
+	&-secondary {
+		background-color: #6200ea; 
+	}
+}
