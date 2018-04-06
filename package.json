@@ -9,24 +9,27 @@
     "react-scripts": "^1.0.17"
   },
   "dependencies": {
+    "materialize-css": "^0.100.2",
     "node-sass-chokidar": "^1.2.2",
     "npm-run-all": "^4.1.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-google-login": "^3.1.0",
+    "react-materialize": "^2.1.4",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "next",
+    "react-select": "^1.2.1",
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0",
     "sanitize.css": "^5.0.0"
   },
   "scripts": {
-    "build-css": "node-sass-chokidar src/index.scss -o src/",
+    "build-css": "node-sass-chokidar src/styles/index.scss -o src/styles",
     "watch-css":
-      "npm run build-css && node-sass-chokidar src/index.scss -o src/ --watch --recursive",
+      "npm run build-css && node-sass-chokidar src/styles/index.scss -o src/styles --watch --recursive",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
     "build-js": "react-scripts build",

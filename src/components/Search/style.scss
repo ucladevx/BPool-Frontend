@@ -1,0 +1,20 @@
+.search {
+	margin: 0 auto;
+	margin-top: 20px;
+	text-align: left;
+	width: 600px;
+
+	@media only screen and (max-width: 600px) {
+	   width: 300px;
+	}
+
+	.input-field {
+		margin-top: 0;
+		padding-left: 20px;
+		width: 100%;
+
+		input::placeholder {
+			color: gray;
+		}
+	}
+}

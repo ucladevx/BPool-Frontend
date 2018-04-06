@@ -1,0 +1,138 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Fira Sans", monospace;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  /* overwrite materialize-css that makes header tags really big */
+  font-weight: 700;
+  padding: 10px 0;
+  margin: 0;
+}
+
+.btn {
+  color: white;
+  height: 40px;
+  border-width: 0;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 0 20px 0 20px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.btn i {
+  vertical-align: middle;
+}
+.btn-primary {
+  background-color: #7c4dff;
+}
+.btn-secondary {
+  background-color: #6200ea;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+}
+.footer #car {
+  width: 100%;
+}
+
+.header {
+  height: 50px;
+}
+.header #logo {
+  width: 150px;
+  padding: 20px 0 0 40px;
+}
+.header #login {
+  padding: 20px 40px 0 0;
+  float: right;
+}
+.header #login a {
+  text-decoration: none;
+  color: black;
+  font-weight: 700;
+}
+
+.landing {
+  width: 500px;
+  margin: 0 auto;
+  padding-top: 10%;
+}
+@media only screen and (max-width: 600px) {
+  .landing {
+    width: 300px;
+  }
+}
+
+.search {
+  margin: 0 auto;
+  margin-top: 20px;
+  text-align: left;
+  width: 600px;
+}
+@media only screen and (max-width: 600px) {
+  .search {
+    width: 300px;
+  }
+}
+.search .input-field {
+  margin-top: 0;
+  padding-left: 20px;
+  width: 100%;
+}
+.search .input-field input::placeholder {
+  color: gray;
+}
+
+.input {
+  padding: 15px 0;
+  display: flex;
+  /* Custom CSS for React Select Component */
+}
+.input label {
+  color: #bbb;
+  font-size: 12px;
+}
+.input .field {
+  width: 100%;
+  padding-left: 20px;
+}
+.input i {
+  vertical-align: middle;
+  font-size: 2rem;
+  line-height: 2em;
+}
+.input .Select-placeholder,
+.input .Select-input,
+.input .Select-value {
+  color: black;
+  font-size: 15px;
+  padding-left: 0 !important;
+  line-height: 40px !important;
+}
+.input .Select-placeholder input,
+.input .Select-input input,
+.input .Select-value input {
+  padding: 0;
+}
+.input .Select-control {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  border-radius: 0;
+}
+.input .Select.is-focused:not(.is-open) > .Select-control {
+  box-shadow: none;
+  border-color: #aaa;
+}
+.input .Select-menu > div {
+  color: #26a69a;
+}

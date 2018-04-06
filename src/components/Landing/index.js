@@ -6,18 +6,20 @@ import { connect } from "react-redux";
 
 const Landing = props => (
   <div className="landing">
-    <h1>Share a ride from UCLA to anywhere.</h1>
+    <h2>Share a ride from UCLA to anywhere.</h2>
     <Button
       label="Find a Ride"
       color="primary"
-      onClick={() => props.changePage("find")}
+      onClick={() => props.changePage("/find")}
     />
 
-    <h3>Driving somewhere and have seats?</h3>
+    <br />
+
+    <h5>Driving somewhere and have seats?</h5>
     <Button
       label="Make a Ride Listing"
       color="secondary"
-      onClick={() => props.changePage("create")}
+      onClick={() => props.changePage("/create")}
     />
   </div>
 );
@@ -25,7 +27,7 @@ const Landing = props => (
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      changePage: link => push(`/${link}`)
+      changePage: link => push(link)
     },
     dispatch
   );
