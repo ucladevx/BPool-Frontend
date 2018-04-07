@@ -18,7 +18,7 @@ class Landing extends React.Component {
     return (
       <div className="landing">
         <h2>Share a ride from UCLA to anywhere.</h2>
-        {loggedIn && (
+        {loggedIn ? (
           <div>
             <Button
               label="Find a Ride"
@@ -35,8 +35,7 @@ class Landing extends React.Component {
               onClick={() => this.props.changePage("/create")}
             />
           </div>
-        )}
-        {!loggedIn && (
+        ) : (
           <div>
             <h5>Returning user?</h5>
             <Login />

@@ -7,14 +7,13 @@ const Header = ({ loggedIn }) => (
     <Link to="/">
       <img id="logo" src={logo} alt="BPool" />
     </Link>
-    {!loggedIn && (
-      <div className="tab">
-        <Link to="/login">Login</Link>
-      </div>
-    )}
-    {loggedIn && (
+    {loggedIn ? (
       <div className="tab">
         <Link to="/profile">Profile</Link>
+      </div>
+    ) : (
+      <div className="tab">
+        <Link to="/login">Login</Link>
       </div>
     )}
   </div>
