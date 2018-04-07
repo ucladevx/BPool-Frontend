@@ -1,4 +1,4 @@
-const api_base = "localhost:3000/api/v1";
+const api_base = "http://localhost:3000/api/v1";
 
 const car_base = `${api_base}/cars"`;
 const rating_base = `${api_base}/ratings`;
@@ -33,4 +33,4 @@ const API = {
   }
 };
 
-export { API };
+export default API;
