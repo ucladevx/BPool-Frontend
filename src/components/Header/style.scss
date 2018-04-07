@@ -1,19 +1,19 @@
 .header {
-  height: 50px; 
+  height: 50px;
 
   #logo {
 	  width: 150px;
-	  padding: 20px 0 0 40px; 
+	  padding: 20px 0 0 40px;
 	}
 
-	#login {
+	.tab {
 	  padding: 20px 40px 0 0;
-	  float: right; 
+	  float: right;
 
 	  a {
 		  text-decoration: none;
 		  color: black;
-		  font-weight: 700; 
+		  font-weight: 700;
 		}
 	}
 }

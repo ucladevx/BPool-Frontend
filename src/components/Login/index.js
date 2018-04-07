@@ -19,7 +19,7 @@ class Login extends React.Component {
     return (
       <GoogleLogin
         clientId="341675348183-sq8g1sc1bon2d9k3j11ju72mod2t2gl4.apps.googleusercontent.com"
-        buttonText="Login"
+        buttonText="Login with your UCLA e-mail"
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
       />
