@@ -1,10 +1,18 @@
 import React from "react";
-import Landing from "../components/Landing";
+import Landing from "./landing.js";
 
-const Home = () => (
-  <div className="home">
-    <Landing />
-  </div>
-);
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  render() {
+    return (
+      <div className="home">
+        <Landing loggedIn={false} />
+      </div>
+    );
+  }
+}
 
 export default Home;

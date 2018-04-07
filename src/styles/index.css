@@ -52,25 +52,14 @@ h6 {
   width: 150px;
   padding: 20px 0 0 40px;
 }
-.header #login {
+.header .tab {
   padding: 20px 40px 0 0;
   float: right;
 }
-.header #login a {
+.header .tab a {
   text-decoration: none;
   color: black;
   font-weight: 700;
-}
-
-.landing {
-  width: 500px;
-  margin: 0 auto;
-  padding-top: 10%;
-}
-@media only screen and (max-width: 600px) {
-  .landing {
-    width: 300px;
-  }
 }
 
 .search {
@@ -135,4 +124,15 @@ h6 {
 }
 .input .Select-menu > div {
   color: #26a69a;
+}
+
+.landing {
+  width: 500px;
+  margin: 0 auto;
+  padding-top: 10%;
+}
+@media only screen and (max-width: 600px) {
+  .landing {
+    width: 300px;
+  }
 }

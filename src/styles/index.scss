@@ -14,6 +14,7 @@ h1, h2, h3, h4, h5, h6 {
 @import '../components/Button/style.scss';
 @import '../components/Footer/style.scss';
 @import '../components/Header/style.scss';
-@import '../components/Landing/style.scss';
 @import '../components/Search/style.scss';
 @import '../components/SelectInput/style.scss';
+
+@import './landing.scss';

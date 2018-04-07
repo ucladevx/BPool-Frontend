@@ -4,11 +4,11 @@ import Home from "./home.js";
 import Find from "./find.js";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Login from "../components/Login/login";
+import Login from "../components/Login";
 
 const App = () => (
   <div>
-    <Header />
+    <Header loggedIn={false} />
 
     <Route exact path="/" component={Home} />
     <Route exact path="/find" component={Find} />
