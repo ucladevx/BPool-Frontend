@@ -5,17 +5,21 @@ import Find from "./find.js";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Login from "../components/Login";
+import SidebarContent from "../components/SidebarContent";
+import Sidebar from "react-sidebar";
 
 const App = () => (
-  <div>
-    <Header loggedIn={false} />
+  <Sidebar sidebar={<SidebarContent />} docked={true}>
+    <div>
+      <Header loggedIn={false} />
 
-    <Route exact path="/" component={Home} />
-    <Route exact path="/find" component={Find} />
-    <Route path="/login" component={Login} />
+      <Route exact path="/" component={Home} />
+      <Route exact path="/find" component={Find} />
+      <Route exact path="/login" component={Login} />
 
-    <Footer />
-  </div>
+      <Footer />
+    </div>
+  </Sidebar>
 );
 
 export default App;
