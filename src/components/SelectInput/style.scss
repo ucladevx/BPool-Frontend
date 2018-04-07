@@ -1,0 +1,48 @@
+.input {
+	padding: 15px 0;
+	display: flex;
+
+	label {
+		color: #bbb;
+		font-size: 12px;
+	}
+
+	.field {
+		width: 100%;
+		padding-left: 20px;
+	}
+
+	i {
+		vertical-align: middle;
+  	font-size: 2rem;
+		line-height: 2em;
+	}
+
+	/* Custom CSS for React Select Component */
+	
+	.Select-placeholder, .Select-input, .Select-value {
+		color: black;
+		font-size: 15px;
+		padding-left: 0 !important;
+		line-height: 40px !important;
+
+		input {
+			padding: 0;
+		}
+	}
+
+	.Select-control {
+		border: none;
+		border-bottom: 1px solid #ccc;
+		border-radius: 0;
+	}
+
+	.Select.is-focused:not(.is-open) > .Select-control {
+		box-shadow: none;
+		border-color: #aaa;
+	}
+
+	.Select-menu > div {
+		color: #26a69a;		
+	}
+}
