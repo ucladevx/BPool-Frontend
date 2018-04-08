@@ -39,12 +39,6 @@ class Landing extends React.Component {
               color="secondary"
               onClick={onCreateClick}
             />
-
-            <Button
-              label="Messages"
-              color="secondary"
-              onClick={() => this.props.changePage("/messages")}
-            />
           </div>
         </div>
 
