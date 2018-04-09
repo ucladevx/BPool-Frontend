@@ -1,7 +1,7 @@
 import React from "react";
 
+import Footer from "../components/Footer";
 import Button from "../components/Button";
-import Login from "../components/Login";
 
 import { push } from "react-router-redux";
 import { bindActionCreators } from "redux";
@@ -13,18 +13,23 @@ class Landing extends React.Component {
     this.state = {};
   }
   render() {
-    const { loggedIn } = this.props;
-    const {} = this.state;
+    const { loggedIn, isDriver } = this.props;
+
+    const onFindClick = loggedIn
+      ? () => this.props.changePage("/find")
+      : () => this.props.changePage("/register");
+
+    const onCreateClick =
+      loggedIn && isDriver
+        ? () => this.props.changePage("/create")
+        : () => this.props.changePage("/register");
+
     return (
       <div className="landing">
-        <h2>Share a ride from UCLA to anywhere.</h2>
-        {loggedIn ? (
+        <div className="landing-text">
+          <h2>Share a ride from UCLA to anywhere.</h2>
           <div>
-            <Button
-              label="Find a Ride"
-              color="primary"
-              onClick={() => this.props.changePage("/find")}
-            />
+            <Button label="Find a Ride" color="primary" onClick={onFindClick} />
 
             <br />
 
@@ -32,28 +37,22 @@ class Landing extends React.Component {
             <Button
               label="Make a Ride Listing"
               color="secondary"
-              onClick={() => this.props.changePage("/create")}
+              onClick={onCreateClick}
             />
           </div>
-        ) : (
-          <div>
-            <h5>Returning user?</h5>
-            <Login />
+        </div>
 
-            <br />
-
-            <h5>Want to hop in?</h5>
-            <Button
-              label="Register"
-              color="secondary"
-              onClick={() => this.props.changePage("/register")}
-            />
-          </div>
-        )}
+        <Footer />
       </div>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    ...state.user
+  };
+};
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
@@ -63,4 +62,4 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 
-export default connect(null, mapDispatchToProps)(Landing);
+export default connect(mapStateToProps, mapDispatchToProps)(Landing);
