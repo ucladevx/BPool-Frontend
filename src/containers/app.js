@@ -6,18 +6,15 @@ import Find from "./find.js";
 import Messages from "./messages.js";
 import Header from "../components/Header";
 import Login from "../components/Login";
+import Register from "./register.js";
 
 const App = () => (
   <div>
-    <Header loggedIn={false} />
-
     <Route exact path="/" component={Home} />
     <Route exact path="/find" component={Find} />
     <Route exact path="/messages" component={Messages} />
     <Route path="/login" component={Login} />
     <Route path="/register" component={Register} />
-
-    <Footer />
   </div>
 );
 

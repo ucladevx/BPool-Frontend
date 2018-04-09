@@ -1,5 +1,6 @@
 import React from "react";
 
+import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Button from "../components/Button";
 
@@ -26,6 +27,7 @@ class Landing extends React.Component {
 
     return (
       <div className="landing">
+        <Header loggedIn={loggedIn} />
         <div className="landing-text">
           <h2>Share a ride from UCLA to anywhere.</h2>
           <div>

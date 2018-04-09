@@ -104,7 +104,19 @@ class Register extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    ...state.user
+  };
+};
+
 const mapDispatchToProps = dispatch =>
+  // login: async () => {
+  //   return await dispatch(Login());
+  // },
+  // registerCar: async car => {
+  //   return await dispatch(RegisterCar(car));
+  // },
   bindActionCreators(
     {
       changePage: link => push(link)
@@ -112,4 +124,4 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 
-export default connect(null, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

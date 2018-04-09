@@ -1,7 +1,6 @@
 import React from "react";
 import logo from "../../static/img/logo.svg";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
 
 const Header = props => (
   <div className="header">
@@ -20,10 +19,4 @@ const Header = props => (
   </div>
 );
 
-const mapStateToProps = state => {
-  return {
-    ...state.user
-  };
-};
-
-export default connect(mapStateToProps, null)(Header);
+export default Header;
