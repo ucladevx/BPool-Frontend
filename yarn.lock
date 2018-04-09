@@ -4961,6 +4961,10 @@ levn@^0.3.0, levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
+linkstate@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/linkstate/-/linkstate-1.1.1.tgz#cb9c29189baa7552295898f78f82b4055d6be108"
+
 lint-staged@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-7.0.0.tgz#57926c63201e7bd38ca0576d74391efa699b4a9d"
@@ -6736,6 +6740,10 @@ react-input-autosize@^2.1.2:
   dependencies:
     prop-types "^15.5.8"
 
+react-is@^16.3.1:
+  version "16.3.1"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.3.1.tgz#ee66e6d8283224a83b3030e110056798488359ba"
+
 react-materialize@^2.1.4:
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/react-materialize/-/react-materialize-2.1.4.tgz#f2efcc5807bbf48d638ec1d72f2c84468816f59c"
@@ -6743,10 +6751,6 @@ react-materialize@^2.1.4:
     classnames "^2.2.5"
     react "^16.2.0"
     react-dom "^16.2.0"
-
-react-is@^16.3.1:
-  version "16.3.1"
-  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.3.1.tgz#ee66e6d8283224a83b3030e110056798488359ba"
 
 react-reconciler@^0.7.0:
   version "0.7.0"

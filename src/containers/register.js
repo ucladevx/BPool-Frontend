@@ -6,6 +6,7 @@ import Login from "../components/Login";
 import { push } from "react-router-redux";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+import linkState from "linkstate";
 
 import API from "../config/api.js";
 
@@ -36,6 +37,7 @@ class Register extends React.Component {
           err
         });
       });
+      return;
     }
     this.setState(prevState => {
       return Object.assign({}, prevState, {
@@ -47,13 +49,14 @@ class Register extends React.Component {
   }
 
   async registerCar() {
-    const { err, car } = await this.props.registerCar();
+    const { err, car } = await this.props.registerCar(this.state.car);
     if (err) {
       this.setState(prevState => {
         return Object.assign({}, prevState, {
           err
         });
       });
+      return;
     }
     await this.setState(prevState => {
       return Object.assign({}, prevState, {
@@ -79,19 +82,23 @@ class Register extends React.Component {
         {register_car && (
           <div className="register-car">
             <h4>Optional: Register as driver</h4>
+            <input value={car.make} onInput={linkState(this, "car.make")} />
+            <input value={car.model} onInput={linkState(this, "car.model")} />
+            <input value={car.year} onInput={linkState(this, "car.year")} />
+            <input value={car.color} onInput={linkState(this, "car.color")} />
             <Button
               label="Skip"
-              color="secondary"
+              color="primary"
               onClick={() => this.props.changePage("/dashboard")}
             />
             <Button
               label="Register"
-              color="primary"
+              color="secondary"
               onClick={this.registerCar}
             />
           </div>
         )}
-        {err && <span>{err} </span>}
+        {err && <span> {err} </span>}
       </div>
     );
   }

@@ -9,7 +9,7 @@ const Header = ({ loggedIn }) => (
     </Link>
     {loggedIn ? (
       <div className="tab">
-        <Link to="/profile">Profile</Link>
+        <Link to="/">Sign out</Link>
       </div>
     ) : (
       <div className="tab">

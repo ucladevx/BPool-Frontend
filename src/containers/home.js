@@ -9,7 +9,7 @@ class Home extends React.Component {
   render() {
     return (
       <div className="home">
-        <Landing loggedIn={false} />
+        <Landing loggedIn={true} />
       </div>
     );
   }
