@@ -29,7 +29,7 @@ const API = {
     list: user_base,
     show: `${user_base}/`,
     me: `${user_base}/@me`,
-    create: `${api_base}/login`
+    login: `${api_base}/login`
   }
 };
 

@@ -2,13 +2,13 @@ import React from "react";
 
 import Button from "../components/Button";
 import Login from "../components/Login";
+import { Input, Row, Col } from "react-materialize";
 
 import { push } from "react-router-redux";
-import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import linkState from "linkstate";
 
-import API from "../config/api.js";
+import { LoginUser, RegisterCar } from "../reducers/register.js";
 
 class Register extends React.Component {
   constructor(props) {
@@ -72,33 +72,78 @@ class Register extends React.Component {
     const {} = this.props;
     const { login, register_car, car, err } = this.state;
     return (
-      <div className="register">
-        {login && (
-          <div className="login">
-            <h4>Login with Google OAuth</h4>
-            <Login />
-          </div>
-        )}
-        {register_car && (
-          <div className="register-car">
-            <h4>Optional: Register as driver</h4>
-            <input value={car.make} onInput={linkState(this, "car.make")} />
-            <input value={car.model} onInput={linkState(this, "car.model")} />
-            <input value={car.year} onInput={linkState(this, "car.year")} />
-            <input value={car.color} onInput={linkState(this, "car.color")} />
-            <Button
-              label="Skip"
-              color="primary"
-              onClick={() => this.props.changePage("/dashboard")}
-            />
-            <Button
-              label="Register"
-              color="secondary"
-              onClick={this.registerCar}
-            />
-          </div>
-        )}
-        {err && <span> {err} </span>}
+      <div className="register container">
+        <Row>
+          <Col m={6} offset="m3">
+            {login && (
+              <div className="login">
+                <Row>
+                  <h4>Login with Google OAuth</h4>
+                </Row>
+                <Row>
+                  <Col m={6} offset="m3">
+                    <Login login={this.login} />
+                  </Col>
+                </Row>
+              </div>
+            )}
+            {register_car && (
+              <div className="register-car">
+                <h4>Optional: You may register as driver.</h4>
+                <h5>Please enter your car details.</h5>
+                <Row>
+                  <Input
+                    m={12}
+                    label="Make"
+                    value={car.make}
+                    onChange={linkState(this, "car.make")}
+                  />
+                </Row>
+                <Row>
+                  <Input
+                    m={12}
+                    label="Model"
+                    value={car.model}
+                    onChange={linkState(this, "car.model")}
+                  />
+                </Row>
+                <Row>
+                  <Input
+                    m={12}
+                    label="Year"
+                    value={car.year}
+                    onChange={linkState(this, "car.year")}
+                  />
+                </Row>
+                <Row>
+                  <Input
+                    m={12}
+                    label="Color"
+                    value={car.color}
+                    onChange={linkState(this, "car.color")}
+                  />
+                </Row>
+                <Row>
+                  <Col m={2} offset="m2">
+                    <Button
+                      label="Skip"
+                      color="primary"
+                      onClick={() => this.props.changePage("/dashboard")}
+                    />
+                  </Col>
+                  <Col m={2} offset="m4">
+                    <Button
+                      label="Register"
+                      color="secondary"
+                      onClick={this.registerCar}
+                    />
+                  </Col>
+                </Row>
+              </div>
+            )}
+            {err && <span> {err} </span>}
+          </Col>
+        </Row>
       </div>
     );
   }
@@ -110,18 +155,12 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch =>
-  // login: async () => {
-  //   return await dispatch(Login());
-  // },
-  // registerCar: async car => {
-  //   return await dispatch(RegisterCar(car));
-  // },
-  bindActionCreators(
-    {
-      changePage: link => push(link)
-    },
-    dispatch
-  );
+const mapDispatchToProps = dispatch => {
+  return {
+    changePage: async link => await dispatch(push(link)),
+    login: async token => await dispatch(LoginUser(token)),
+    registerCar: async car => await dispatch(RegisterCar(car))
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);
