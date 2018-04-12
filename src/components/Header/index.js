@@ -10,6 +10,7 @@ const Header = props => (
     {props.loggedIn ? (
       <div className="tab">
         <Link to="/">Sign out</Link>
+        {/* TODO: Clear token */}
       </div>
     ) : (
       <div className="tab">
