@@ -2,8 +2,8 @@ import React from "react";
 import GenericCard from "../components/Card";
 
 class Dashboard extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       trips: [],
     };
@@ -21,7 +21,10 @@ class Dashboard extends React.Component {
     });
   }
   render() {
-    const tripCards = this.state.trips.map(tripInfo => (
+    const {} = this.props;
+    const { trips } = this.state;
+
+    const tripCards = trips.map(tripInfo => (
       <li>
         <GenericCard
           date={tripInfo.date}
