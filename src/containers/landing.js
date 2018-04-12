@@ -49,14 +49,14 @@ class Landing extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    ...state.user
+    ...state.user,
   };
 };
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      changePage: link => push(link)
+      changePage: link => push(link),
     },
     dispatch
   );

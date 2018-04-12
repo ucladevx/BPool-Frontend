@@ -5,24 +5,24 @@ import Pane from "./pane";
 const styles = {
   sidebar: {
     width: 256,
-    height: "100%"
+    height: "100%",
   },
   sidebarLink: {
     display: "block",
     padding: "16px 0px",
     color: "#757575",
-    textDecoration: "none"
+    textDecoration: "none",
   },
   divider: {
     margin: "8px 0",
     height: 1,
-    backgroundColor: "#757575"
+    backgroundColor: "#757575",
   },
   content: {
     padding: "16px",
     height: "100%",
-    backgroundColor: "white"
-  }
+    backgroundColor: "white",
+  },
 };
 
 const SidebarContent = props => {
