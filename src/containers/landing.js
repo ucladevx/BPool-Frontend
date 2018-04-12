@@ -1,5 +1,6 @@
 import React from "react";
 
+import Footer from "../components/Footer";
 import Button from "../components/Button";
 
 import { push } from "react-router-redux";
@@ -25,19 +26,23 @@ class Landing extends React.Component {
 
     return (
       <div className="landing">
-        <h2>Share a ride from UCLA to anywhere.</h2>
-        <div>
-          <Button label="Find a Ride" color="primary" onClick={onFindClick} />
+        <div className="landing-text">
+          <h2>Share a ride from UCLA to anywhere.</h2>
+          <div>
+            <Button label="Find a Ride" color="primary" onClick={onFindClick} />
 
-          <br />
+            <br />
 
-          <h5>Driving somewhere and have seats?</h5>
-          <Button
-            label="Make a Ride Listing"
-            color="secondary"
-            onClick={onCreateClick}
-          />
+            <h5>Driving somewhere and have seats?</h5>
+            <Button
+              label="Make a Ride Listing"
+              color="secondary"
+              onClick={onCreateClick}
+            />
+          </div>
         </div>
+
+        <Footer />
       </div>
     );
   }
