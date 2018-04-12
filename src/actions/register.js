@@ -10,16 +10,9 @@ const LoginUser = token => {
         body: JSON.stringify(token)
       });
       const status = response.status;
-      if (status >= 200 && status < 300) {
-        const data = await response.json();
-        return {
-          err: false,
-          data
-        };
-      } else {
-        const data = await response.json();
-        throw new Error(data.message);
-      }
+      const data = await response.json();
+      const err = status >= 200 && status < 300;
+      return { err, data };
     } catch (e) {
       return {
         err: e.message
@@ -38,16 +31,9 @@ const RegisterCar = car => {
         body: JSON.stringify(car)
       });
       const status = response.status;
-      if (status >= 200 && status < 300) {
-        const data = await response.json();
-        return {
-          err: false,
-          data
-        };
-      } else {
-        const data = await response.json();
-        throw new Error(data.message);
-      }
+      const data = await response.json();
+      const err = status >= 200 && status < 300;
+      return { err, data };
     } catch (e) {
       return {
         err: e.message
