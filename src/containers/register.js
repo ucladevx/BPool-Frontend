@@ -4,11 +4,11 @@ import Button from "../components/Button";
 import Login from "../components/Login";
 import { Input, Row, Col } from "react-materialize";
 
-import { push } from "react-router-redux";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import linkState from "linkstate";
 
-import { LoginUser, RegisterCar } from "../reducers/register.js";
+import { LoginUser, RegisterCar } from "../actions/register";
 
 class Register extends React.Component {
   constructor(props) {
@@ -29,41 +29,29 @@ class Register extends React.Component {
     this.registerCar = this.registerCar.bind(this);
   }
 
-  async login() {
-    const { err, data } = await this.props.login();
+  async login(token) {
+    const { err, data } = await this.props.login(token);
     if (err) {
-      this.setState(prevState => {
-        return Object.assign({}, prevState, {
-          err
-        });
-      });
+      this.setState({ err });
       return;
     }
-    this.setState(prevState => {
-      return Object.assign({}, prevState, {
-        err: false,
-        login: false,
-        register_car: true
-      });
+    this.setState({
+      err: false,
+      login: false,
+      register_car: true
     });
   }
 
   async registerCar() {
     const { err, car } = await this.props.registerCar(this.state.car);
     if (err) {
-      this.setState(prevState => {
-        return Object.assign({}, prevState, {
-          err
-        });
-      });
+      this.setState({ err });
       return;
     }
-    await this.setState(prevState => {
-      return Object.assign({}, prevState, {
-        err: false,
-        login: false,
-        register_car: false
-      });
+    await this.setState({
+      err: false,
+      login: false,
+      register_car: false
     });
     this.props.changePage("/dashboard");
   }
@@ -125,11 +113,9 @@ class Register extends React.Component {
                 </Row>
                 <Row>
                   <Col m={2} offset="m2">
-                    <Button
-                      label="Skip"
-                      color="primary"
-                      onClick={() => this.props.changePage("/dashboard")}
-                    />
+                    <Link to="/dashboard">
+                      <Button label="Skip" color="primary" />
+                    </Link>
                   </Col>
                   <Col m={2} offset="m4">
                     <Button
@@ -157,7 +143,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    changePage: async link => await dispatch(push(link)),
     login: async token => await dispatch(LoginUser(token)),
     registerCar: async car => await dispatch(RegisterCar(car))
   };

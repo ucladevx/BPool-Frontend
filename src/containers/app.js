@@ -1,12 +1,12 @@
 import React from "react";
 import { Route } from "react-router-dom";
 
-import Home from "./home.js";
-import Find from "./find.js";
-import Messages from "./messages.js";
+import Home from "./home";
+import Find from "./find";
+import Messages from "./messages";
 import Header from "../components/Header";
 import Login from "../components/Login";
-import Register from "./register.js";
+import Register from "./register";
 
 const App = () => (
   <div>

@@ -1,4 +1,4 @@
-import API from "../config/api.js";
+import API from "../config/api";
 
 const LoginUser = token => {
   return async dispatch => {

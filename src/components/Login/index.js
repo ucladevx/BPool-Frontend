@@ -11,6 +11,7 @@ import { GoogleLogin } from "react-google-login";
 }*/
 
 const responseGoogle = response => {
+  this.props.login(response.hg.id_token);
   console.log(response);
 };
 
@@ -22,6 +23,7 @@ class Login extends React.Component {
         buttonText="Login"
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
+        hostedDomain="ucla.edu"
       />
     );
   }
