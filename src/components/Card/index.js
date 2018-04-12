@@ -1,11 +1,11 @@
 import React from "react";
 import { Card } from "react-materialize";
-class GenericCard extends React.Component {
-  constructor() {
-    super();
-  }
-  render() {
-    return <Card> </Card>;
-  }
-}
+const GenericCard = ({ date, price }) => {
+  return (
+    <Card>
+      {" "}
+      {date} <span style={{ float: "right" }}> {price} </span>
+    </Card>
+  );
+};
 export default GenericCard;
