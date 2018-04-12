@@ -7,7 +7,7 @@ const LoginUser = token => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
-        body: JSON.stringify(token)
+        body: JSON.stringify(token),
       });
       const status = response.status;
       const data = await response.json();
@@ -15,7 +15,7 @@ const LoginUser = token => {
       return { err, data };
     } catch (e) {
       return {
-        err: e.message
+        err: e.message,
       };
     }
   };
@@ -28,7 +28,7 @@ const RegisterCar = car => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
-        body: JSON.stringify(car)
+        body: JSON.stringify(car),
       });
       const status = response.status;
       const data = await response.json();
@@ -36,7 +36,7 @@ const RegisterCar = car => {
       return { err, data };
     } catch (e) {
       return {
-        err: e.message
+        err: e.message,
       };
     }
   };

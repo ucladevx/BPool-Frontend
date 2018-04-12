@@ -20,9 +20,9 @@ class Register extends React.Component {
         make: "",
         model: "",
         year: "",
-        color: ""
+        color: "",
       },
-      err: false
+      err: false,
     };
 
     this.login = this.login.bind(this);
@@ -38,7 +38,7 @@ class Register extends React.Component {
     this.setState({
       err: false,
       login: false,
-      register_car: true
+      register_car: true,
     });
   }
 
@@ -51,7 +51,7 @@ class Register extends React.Component {
     await this.setState({
       err: false,
       login: false,
-      register_car: false
+      register_car: false,
     });
     this.props.changePage("/dashboard");
   }
@@ -137,14 +137,14 @@ class Register extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    ...state.user
+    ...state.user,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     login: async token => await dispatch(LoginUser(token)),
-    registerCar: async car => await dispatch(RegisterCar(car))
+    registerCar: async car => await dispatch(RegisterCar(car)),
   };
 };
 
