@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import Home from "./home.js";
 import Find from "./find.js";
 import Messages from "./messages.js";
+import Dashboard from "./dashboard.js";
 import Header from "../components/Header";
 import Login from "../components/Login";
 import SidebarContent from "../components/SidebarContent";
@@ -15,6 +16,7 @@ const App = () => (
       <Route exact path="/" component={Home} />
       <Route exact path="/find" component={Find} />
       <Route exact path="/messages" component={Messages} />
+      <Route exact path="/dashboard" component={Dashboard} />
       <Route path="/login" component={Login} />
     </div>
   </Sidebar>
