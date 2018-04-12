@@ -5,7 +5,7 @@ class Dashboard extends React.Component {
   constructor() {
     super();
     this.state = {
-      trips: []
+      trips: [],
     };
   }
   componentDidMount() {
@@ -16,14 +16,19 @@ class Dashboard extends React.Component {
     // TODO fetch all trips
     this.setState({
       trips: [
-        { date: "INSERT DATE HERE", dest_start: "", dest_end: "", price: 11 }
-      ]
+        { date: "INSERT DATE HERE", start: "UCLA", dest: "UCB", price: 11 },
+      ],
     });
   }
   render() {
     const tripCards = this.state.trips.map(tripInfo => (
       <li>
-        <GenericCard date={tripInfo.date} price={tripInfo.price}>
+        <GenericCard
+          date={tripInfo.date}
+          price={tripInfo.price}
+          start={tripInfo.start}
+          dest={tripInfo.dest}
+        >
           {" "}
         </GenericCard>
       </li>
