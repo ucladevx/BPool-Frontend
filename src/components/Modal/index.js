@@ -12,13 +12,9 @@ class Modal extends React.Component {
     this.props.closeModal();
   }
   render() {
-    const { info } = this.props;
-    const style = ["modal"];
-    if (this.props.scrollbox) {
-      style.push("scrollbox");
-    }
+    const { info, scrollbox } = this.props;
     return (
-      <div className={style.join(" ")}>
+      <div className={`modal ${scrollbox ? "scrollbox" : ""}`}>
         <Button className="close-button" onClick={this.closeModal} />
         <Card>{info}</Card>
       </div>
