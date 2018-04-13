@@ -4,7 +4,7 @@ import Pane from "./pane";
 // Placeholder style (it's also inline so time to do some CSS wizardry at some point)
 const styles = {
   sidebar: {
-    width: 256,
+    width: 200,
     height: "100%",
   },
   sidebarLink: {

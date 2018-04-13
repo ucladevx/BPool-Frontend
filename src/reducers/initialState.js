@@ -1,7 +1,7 @@
 export default {
   user: {
-    loggedIn: true,
-    isDriver: true,
-    isAdmin: true
-  }
+    loggedIn: false,
+    isDriver: false,
+    isAdmin: false,
+  },
 };
