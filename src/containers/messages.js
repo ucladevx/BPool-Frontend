@@ -24,7 +24,7 @@ class Messages extends React.Component {
   }
 
   componentWillReceiveProps = nextProps => {
-    if (!nextProps.loggedIn) nextProps.changePage("/registration");
+    if (!nextProps.loggedIn) nextProps.changePage("/register");
   };
 
   filterMessages = value => {
@@ -171,6 +171,8 @@ class Messages extends React.Component {
             <div className="messages-detail">
               <span className="messages-detail-label">Estimated Cost:</span> $40
             </div>
+
+            {/* TODO: Add radio or something to allow drivers to approve/decline */}
           </div>
         </div>
       </div>
