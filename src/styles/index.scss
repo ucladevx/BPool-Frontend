@@ -2,6 +2,14 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Fira Sans', monospace;
+
+  a {
+  	color: #6200EA;
+  }
+}
+
+main {
+	padding: 0 5%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -11,10 +19,11 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 }
 
+@import './landing.scss';
+@import './messages.scss';
+
 @import '../components/Button/style.scss';
 @import '../components/Footer/style.scss';
 @import '../components/Header/style.scss';
 @import '../components/Search/style.scss';
 @import '../components/SelectInput/style.scss';
-
-@import './landing.scss';

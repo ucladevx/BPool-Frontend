@@ -7,7 +7,6 @@ import { Input } from "react-materialize";
 import Button from "../Button";
 import SelectInput from "../SelectInput";
 import cities from "../../config/cities";
-
 // used for calendar component
 import "materialize-css/dist/css/materialize.min.css";
 import "materialize-css/dist/js/materialize.min.js";
@@ -18,13 +17,13 @@ class Search extends React.Component {
     this.state = {
       source: "",
       destination: "",
-      date: "" // this is stored as a 13 digit epoch time
+      date: "", // this is stored as a 13 digit epoch time
     };
   }
 
   handleChange = (e, input) => {
     this.setState({
-      [input]: get(e, "value", "")
+      [input]: get(e, "value", ""),
     });
   };
 
@@ -84,7 +83,7 @@ class Search extends React.Component {
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      changePage: link => push(link)
+      changePage: link => push(link),
     },
     dispatch
   );

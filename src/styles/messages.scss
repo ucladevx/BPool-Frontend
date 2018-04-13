@@ -1,0 +1,150 @@
+.messages {
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	height: 80vh;
+  overflow: auto;
+
+	&-title {
+		border-bottom: 1px solid rgba(102,102,102,0.3);
+	}
+
+	&-left {
+		flex-basis: 30%;
+		max-width: 30%;
+		border: 1px solid rgba(102,102,102,0.3);
+		display: flex;
+		flex-flow: column;
+
+		.input-field {
+			width: 80%;
+			margin: 0 auto;
+			margin-top: 10px;
+			padding-right: 10px;
+
+			input {
+				border: 1px solid rgba(102,102,102,0.3);
+				border-radius: 10px;
+				padding-left: 10px;
+			}
+			input::placeholder {
+				color: gray;
+			}
+		}
+
+		.messages-boxes {
+			overflow: auto;
+		}
+		.messages-box-wrapper {
+			padding: 7px;
+		}
+		.selected {
+			background-color: rgba(0, 0, 0, .1)
+		}
+		.messages-box {
+			display: flex;
+			height: 50px;
+			cursor: pointer;
+
+			&-img {
+				height: 100%;
+
+				img {
+					height: 100%;
+				}
+			}
+
+			&-text {
+				text-align: left;
+				padding-left: 10px;
+
+				/* put a '...' if the text overflows */
+				white-space: nowrap;
+		    overflow: hidden;
+		    text-overflow: ellipsis;
+
+				&-name {
+					font-weight: bold;
+					font-size: 15px;
+				}
+
+				&-preview {
+					text-overflow: ellipsis;
+					opacity: 0.6;
+				}
+			}
+		}
+	}
+
+	&-main {
+		flex-basis: 50%;
+		max-width: 50%;
+		border: 1px solid rgba(102,102,102,0.3);
+		display: flex;
+		flex-direction: column;
+		flex: 1 1 auto;
+
+		a {
+			color: #000;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+
+		.input-field {
+			padding-right: 10px;
+
+			input {
+				border-top: 1px solid rgba(0,0,0,0.5);
+				padding-left: 10px;
+				margin-bottom: 0;
+			}
+			input::placeholder {
+				color: gray;
+			}
+		}
+
+		.messages-selected {
+			padding: 0 10px;
+			overflow: auto;
+			display: flex;
+			flex-direction: column-reverse;
+
+			div[class^="messages-message"] {
+				padding: 5px 10px;
+				margin: 5px 0;
+				border-radius: 20px;
+				display: table;
+			}
+			.messages-message-right {
+				margin-left: auto !important;
+				// background-color: #7c4dff;
+				background-color: #6200EA;
+				color: white;
+			}
+			.messages-message-left {
+				margin-right: auto !important;
+				background-color: #f1f0f0;
+			}
+		}
+	}
+
+	&-right {
+		flex-basis: 20%;
+		max-width: 20%;
+		border: 1px solid rgba(102,102,102,0.3);
+		display: flex;
+		flex-flow: column;
+
+		.messages-detail {
+			padding: 10px 0;
+
+			&-label {
+				font-weight: bold;
+				display: block;
+			}
+		}
+	}
+
+}

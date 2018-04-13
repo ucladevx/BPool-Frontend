@@ -1,5 +1,7 @@
 import React from "react";
 
+import Button from "../Button";
+
 import { Card } from "react-materialize";
 
 class Modal extends React.Component {

@@ -1,5 +1,4 @@
 import React from "react";
-import Footer from "../components/Footer";
 import Button from "../components/Button";
 
 import { push } from "react-router-redux";
@@ -40,8 +39,6 @@ class Landing extends React.Component {
             />
           </div>
         </div>
-
-        <Footer />
       </div>
     );
   }
