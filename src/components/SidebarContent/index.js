@@ -25,6 +25,25 @@ const styles = {
   },
 };
 
+const sidebarMapping = [
+  {
+    name: "Home",
+    link: "/",
+  },
+  {
+    name: "Dashboard",
+    link: "/dashboard",
+  },
+  {
+    name: "Find",
+    link: "/find",
+  },
+  {
+    name: "List",
+    link: "/create",
+  },
+];
+
 const SidebarContent = props => {
   const style = props.style
     ? { ...styles.sidebar, ...props.style }
@@ -33,16 +52,16 @@ const SidebarContent = props => {
   const links = [];
 
   // Placeholder data (will likely want to load the sections from some constants file/environment)
-  for (let ind = 0; ind < 10; ind++) {
+  for (let i = 0; i < sidebarMapping.length; i++) {
     links.push(
-      <a key={ind} href="#" style={styles.sidebarLink}>
-        Mock menu item {ind}
+      <a key={i} href={sidebarMapping[i].link} style={styles.sidebarLink}>
+        {sidebarMapping[i].name}
       </a>
     );
   }
 
   return (
-    <Pane title="INSERT USERNAME HERE" style={style}>
+    <Pane title={props.username ? props.username : "Username"} style={style}>
       <div style={styles.content}>
         <div style={styles.divider} />
         {links}
