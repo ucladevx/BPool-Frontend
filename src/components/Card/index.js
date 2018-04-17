@@ -13,10 +13,11 @@ class GenericCard extends React.Component {
     return (
       <Card onClick={this.openModal}>
         {date} <span style={{ float: "right" }}> {price} </span>
-        <h3>
+        <div style={{ fontSize: "2.57em" }}>
           {" "}
-          {start} to {dest}{" "}
-        </h3>
+          <span style={{ color: "#7c4dff" }}> {start} </span> to{" "}
+          <span style={{ color: "#7c4dff" }}> {dest} </span>{" "}
+        </div>
       </Card>
     );
   }

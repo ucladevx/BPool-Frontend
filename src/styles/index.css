@@ -161,6 +161,19 @@ h6 {
   display: block;
 }
 
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+.cards .card_container {
+  flex-basis: 50%;
+}
+@media only screen and (max-width: 600px) {
+  .cards .card_container {
+    flex-basis: 100%;
+  }
+}
+
 .btn {
   color: white;
   height: 40px;

@@ -2,12 +2,11 @@ import React from "react";
 import GenericCard from "../components/Card";
 import Modal from "../components/Modal";
 
-class Dashboard extends React.Component {
+class Rides extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      upcomingTrips: [],
-      pastTrips: [],
+      trips: [],
       selectedTrip: {},
       modalViewing: false,
     };
@@ -23,14 +22,10 @@ class Dashboard extends React.Component {
 
   async getRides() {
     // TODO fetch all trips
-    // This is a call to a users previous rides
+    // This will be the call to the search API to find rides
     this.setState({
-      upcomingTrips: [
+      trips: [
         { date: "INSERT DATE HERE", start: "UCLA", dest: "UCB", price: 11 },
-        { date: "INSERT DATE HERE", start: "UCB", dest: "UCLA", price: 15 },
-      ],
-      pastTrips: [
-        { date: "INSERT DATE HERE", start: "UCB", dest: "UCLA", price: 5 },
       ],
     });
   }
@@ -52,22 +47,9 @@ class Dashboard extends React.Component {
 
   render() {
     const {} = this.props;
-    const { upcomingTrips, pastTrips, selectedTrip, modalViewing } = this.state;
+    const { trips, selectedTrip, modalViewing } = this.state;
 
-    const upcomingCards = upcomingTrips.map(tripInfo => (
-      <div className="card_container">
-        <GenericCard
-          date={tripInfo.date}
-          price={tripInfo.price}
-          start={tripInfo.start}
-          dest={tripInfo.dest}
-          getByID={this.getRideByID}
-          id={tripInfo.id}
-        />
-      </div>
-    ));
-
-    const pastCards = pastTrips.map(tripInfo => (
+    const tripCards = trips.map(tripInfo => (
       <div className="card_container">
         <GenericCard
           date={tripInfo.date}
@@ -84,13 +66,11 @@ class Dashboard extends React.Component {
         {modalViewing && (
           <Modal info={selectedTrip} closeModal={this.closeModal} scrollbox />
         )}
-        <h2> Your Upcoming Trips </h2>
-        <div className="cards">{upcomingCards}</div>
-        <h2> Your Past Trips </h2>
-        <div className="cards">{pastCards}</div>
+        <h2> Trips </h2>
+        <div className="cards">{tripCards}</div>
       </div>
     );
   }
 }
 
-export default Dashboard;
+export default Rides;
