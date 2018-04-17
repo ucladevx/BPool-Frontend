@@ -168,7 +168,7 @@ h6 {
 .cards .card_container {
   flex-basis: 50%;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
   .cards .card_container {
     flex-basis: 100%;
   }

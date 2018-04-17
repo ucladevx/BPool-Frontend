@@ -11,14 +11,16 @@ class GenericCard extends React.Component {
   render() {
     const { date, price, start, dest } = this.props;
     return (
-      <Card onClick={this.openModal}>
-        {date} <span style={{ float: "right" }}> {price} </span>
-        <div style={{ fontSize: "2.57em" }}>
-          {" "}
-          <span style={{ color: "#7c4dff" }}> {start} </span> to{" "}
-          <span style={{ color: "#7c4dff" }}> {dest} </span>{" "}
-        </div>
-      </Card>
+      <div style={{ marginRight: "10px" }}>
+        <Card onClick={this.openModal}>
+          {date} <span style={{ float: "right" }}> {price} </span>
+          <div style={{ fontSize: "2.57em" }}>
+            {" "}
+            <span style={{ color: "#7c4dff" }}> {start} </span> to{" "}
+            <span style={{ color: "#7c4dff" }}> {dest} </span>{" "}
+          </div>
+        </Card>
+      </div>
     );
   }
 }

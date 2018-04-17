@@ -51,7 +51,6 @@ const SidebarContent = props => {
 
   const links = [];
 
-  // Placeholder data (will likely want to load the sections from some constants file/environment)
   for (let i = 0; i < sidebarMapping.length; i++) {
     links.push(
       <a key={i} href={sidebarMapping[i].link} style={styles.sidebarLink}>
