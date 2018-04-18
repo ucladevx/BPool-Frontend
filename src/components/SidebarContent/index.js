@@ -42,29 +42,30 @@ const sidebarMapping = [
     name: "List",
     link: "/create",
   },
+  {
+    name: "Messages",
+    link: "/messages",
+  },
 ];
+
+const renderLinks = () => {
+  return sidebarMapping.map((link, index) => (
+    <a key={index} href={link.link} style={styles.sidebarLink}>
+      {link.name}
+    </a>
+  ));
+};
 
 const SidebarContent = props => {
   const style = props.style
     ? { ...styles.sidebar, ...props.style }
     : styles.sidebar;
 
-  const links = [];
-
-  // Placeholder data (will likely want to load the sections from some constants file/environment)
-  for (let i = 0; i < sidebarMapping.length; i++) {
-    links.push(
-      <a key={i} href={sidebarMapping[i].link} style={styles.sidebarLink}>
-        {sidebarMapping[i].name}
-      </a>
-    );
-  }
-
   return (
     <Pane title={props.username ? props.username : "Username"} style={style}>
       <div style={styles.content}>
         <div style={styles.divider} />
-        {links}
+        {renderLinks()}
       </div>
     </Pane>
   );
