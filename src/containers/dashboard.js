@@ -1,23 +1,20 @@
 import React from "react";
 import GenericCard from "../components/Card";
-import Modal from "../components/Modal";
+import GenericModal from "../components/Modal";
 
 import { connect } from "react-redux";
 
-import {
-  ListRides,
-  GetRideByID,
-  CreateRide,
-  UpdateRide,
-  DeleteRide,
-} from "../actions/ride";
+import { GetRideByID, ListRides } from "../actions/ride";
 
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
+    // TODO: Flesh out ride object
     this.state = {
       trips: [],
-      selectedTrip: {},
+      selectedTrip: {
+        info: "",
+      },
       modalViewing: false,
     };
 
@@ -41,8 +38,11 @@ class Dashboard extends React.Component {
 
   async getRideByID(id) {
     // TODO: fetch specific ride
+    console.log(this.state.modalViewing);
     this.setState({
-      selectedTrip: {},
+      selectedTrip: {
+        info: "INSERT INFO HERE",
+      },
       modalViewing: true,
     });
   }
@@ -73,7 +73,11 @@ class Dashboard extends React.Component {
     return (
       <div className="dashboard container">
         {modalViewing && (
-          <Modal info={selectedTrip} closeModal={this.closeModal} scrollbox />
+          <GenericModal
+            trip={selectedTrip}
+            closeModal={this.closeModal}
+            scrollbox
+          />
         )}
         <ul>{tripCards}</ul>
       </div>

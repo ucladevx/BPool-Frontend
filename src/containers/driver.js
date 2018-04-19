@@ -2,35 +2,33 @@ import React from "react";
 
 import Button from "../components/Button";
 import Login from "../components/Login";
-import { Input, Row, Col } from "react-materialize";
+import GenericCard from "../components/Card";
+import { Input, Row, Col, Card } from "react-materialize";
+import Modal from "../components/Modal";
 
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import linkState from "linkstate";
 
 import {
+  DeleteRide,
   ListRides,
   GetRideByID,
-  CreateRide,
   UpdateRide,
-  DeleteRide,
 } from "../actions/ride";
 
 class DriverPanel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      rides: [],
-      selectedRide: {},
-      rideForm: {},
-      formViewing: false,
-      rideViewing: false,
+      trips: [],
+      selectedTrip: {},
+      tripViewing: false,
       err: false,
     };
 
     this.listRides = this.listRides.bind(this);
     this.getRideByID = this.getRideByID.bind(this);
-    this.createRide = this.createRide.bind(this);
     this.updateRide = this.updateRide.bind(this);
     this.deleteRide = this.deleteRide.bind(this);
   }
@@ -56,17 +54,6 @@ class DriverPanel extends React.Component {
     this.setState({
       err: false,
       selectedRide: data,
-    });
-  }
-
-  async createRide() {
-    const { err } = await this.props.createRide(this.state.rideForm);
-    if (err) {
-      this.setState({ err });
-      return;
-    }
-    this.setState({
-      err: false,
     });
   }
 
@@ -98,15 +85,50 @@ class DriverPanel extends React.Component {
 
   render() {
     const {} = this.props;
-    const {
-      rides,
-      selectedRide,
-      rideForm,
-      formViewing,
-      rideViewing,
-      err,
-    } = this.state;
-    return <div className="driver container" />;
+    const { trips, selectedTrip, tripViewing, err } = this.state;
+
+    const tripCards = trips.map(tripInfo => (
+      <li>
+        <GenericCard
+          date={tripInfo.date}
+          price={tripInfo.price}
+          start={tripInfo.start}
+          dest={tripInfo.dest}
+          getByID={this.getRideByID}
+          id={tripInfo.id}
+        />
+      </li>
+    ));
+
+    return (
+      <div className="driver container">
+        <Card>
+          <Row>
+            <Col m={6}>
+              <h4> Start a ride </h4>
+            </Col>
+            <Col m={6}>
+              <Link to="/create">
+                <Button label="Create" color="secondary" />
+              </Link>
+            </Col>
+          </Row>
+        </Card>
+        <Row>
+          <h2> Upcoming rides </h2>
+          {tripCards}
+        </Row>
+        {tripViewing && (
+          <Modal
+            trip={selectedTrip}
+            closeModal={this.closeModal}
+            delete={this.deleteRide}
+            crollbox
+            driver
+          />
+        )}
+      </div>
+    );
   }
 }
 
@@ -120,7 +142,6 @@ const mapDispatchToProps = dispatch => {
   return {
     listRides: async () => await dispatch(ListRides()),
     getRideByID: async id => await dispatch(GetRideByID(id)),
-    createRide: async ride => await dispatch(CreateRide(ride)),
     updateRide: async ride => await dispatch(UpdateRide(ride)),
     deleteRide: async id => await dispatch(DeleteRide(id)),
   };
