@@ -10,19 +10,24 @@ import { GoogleLogin } from "react-google-login";
   />
 }*/
 
-const responseGoogle = response => {
-  this.props.login(response.hg.id_token);
-  console.log(response);
-};
-
 class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.responseGoogle = this.responseGoogle.bind(this);
+  }
+
+  responseGoogle(response) {
+    console.log(response);
+    this.props.login(response.tokenId);
+  }
+
   render() {
     return (
       <GoogleLogin
         clientId="341675348183-sq8g1sc1bon2d9k3j11ju72mod2t2gl4.apps.googleusercontent.com"
         buttonText="Login"
-        onSuccess={responseGoogle}
-        onFailure={responseGoogle}
+        onSuccess={this.responseGoogle}
+        onFailure={this.responseGoogle}
         hostedDomain="g.ucla.edu"
       />
     );

@@ -2,6 +2,16 @@ import React from "react";
 import GenericCard from "../components/Card";
 import Modal from "../components/Modal";
 
+import { connect } from "react-redux";
+
+import {
+  ListRides,
+  GetRideByID,
+  CreateRide,
+  UpdateRide,
+  DeleteRide,
+} from "../actions/ride";
+
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
@@ -11,16 +21,16 @@ class Dashboard extends React.Component {
       modalViewing: false,
     };
 
-    this.getRides = this.getRides.bind(this);
+    this.listRides = this.listRides.bind(this);
     this.getRideByID = this.getRideByID.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
 
   componentDidMount() {
-    this.getRides();
+    this.listRides();
   }
 
-  async getRides() {
+  async listRides() {
     // TODO fetch all trips
     this.setState({
       trips: [
@@ -71,4 +81,19 @@ class Dashboard extends React.Component {
   }
 }
 
-export default Dashboard;
+const mapStateToProps = state => {
+  return {
+    ...state.user,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    listRides: async () => await dispatch(ListRides()),
+    getRideByID: async id => await dispatch(GetRideByID(id)),
+    createRide: async ride => await dispatch(CreateRide(ride)),
+    deleteRide: async id => await dispatch(DeleteRide(id)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
