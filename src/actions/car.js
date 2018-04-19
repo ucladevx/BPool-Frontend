@@ -10,9 +10,13 @@ const RegisterCar = car => {
         body: JSON.stringify(car),
       });
       const status = response.status;
-      const data = await response.json();
-      const err = status >= 200 && status < 300;
-      return { err, data };
+      const { data, error } = await response.json();
+      const err = status < 200 || status >= 300;
+      if (err) {
+        throw new Error(error);
+      } else {
+        return { err, data };
+      }
     } catch (e) {
       return {
         err: e.message,

@@ -1,6 +1,6 @@
 import React from "react";
-import GenericCard from "../components/Card";
-import GenericModal from "../components/Modal";
+import RideCard from "../components/Card";
+import RideModal from "../components/Modal";
 
 import { connect } from "react-redux";
 
@@ -18,9 +18,9 @@ class Dashboard extends React.Component {
       modalViewing: false,
     };
 
-    this.listRides = this.listRides.bind(this);
-    this.getRideByID = this.getRideByID.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.getRideByID = this.getRideByID.bind(this);
+    this.listRides = this.listRides.bind(this);
   }
 
   componentDidMount() {
@@ -60,7 +60,7 @@ class Dashboard extends React.Component {
 
     const tripCards = trips.map(tripInfo => (
       <li>
-        <GenericCard
+        <RideCard
           date={tripInfo.date}
           price={tripInfo.price}
           start={tripInfo.start}
@@ -73,7 +73,7 @@ class Dashboard extends React.Component {
     return (
       <div className="dashboard container">
         {modalViewing && (
-          <GenericModal
+          <RideModal
             trip={selectedTrip}
             closeModal={this.closeModal}
             scrollbox
@@ -93,10 +93,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    listRides: async () => await dispatch(ListRides()),
     getRideByID: async id => await dispatch(GetRideByID(id)),
-    createRide: async ride => await dispatch(CreateRide(ride)),
-    deleteRide: async id => await dispatch(DeleteRide(id)),
+    listRides: async () => await dispatch(ListRides()),
   };
 };
 

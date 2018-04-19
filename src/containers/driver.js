@@ -2,9 +2,9 @@ import React from "react";
 
 import Button from "../components/Button";
 import Login from "../components/Login";
-import GenericCard from "../components/Card";
 import { Input, Row, Col, Card } from "react-materialize";
-import Modal from "../components/Modal";
+import RideCard from "../components/Card";
+import RideModal from "../components/Modal";
 
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
@@ -12,8 +12,8 @@ import linkState from "linkstate";
 
 import {
   DeleteRide,
-  ListRides,
   GetRideByID,
+  ListRides,
   UpdateRide,
 } from "../actions/ride";
 
@@ -89,7 +89,7 @@ class DriverPanel extends React.Component {
 
     const tripCards = trips.map(tripInfo => (
       <li>
-        <GenericCard
+        <RideCard
           date={tripInfo.date}
           price={tripInfo.price}
           start={tripInfo.start}
@@ -119,7 +119,7 @@ class DriverPanel extends React.Component {
           {tripCards}
         </Row>
         {tripViewing && (
-          <Modal
+          <RideModal
             trip={selectedTrip}
             closeModal={this.closeModal}
             delete={this.deleteRide}
@@ -140,10 +140,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    listRides: async () => await dispatch(ListRides()),
-    getRideByID: async id => await dispatch(GetRideByID(id)),
-    updateRide: async ride => await dispatch(UpdateRide(ride)),
     deleteRide: async id => await dispatch(DeleteRide(id)),
+    getRideByID: async id => await dispatch(GetRideByID(id)),
+    listRides: async () => await dispatch(ListRides()),
+    updateRide: async ride => await dispatch(UpdateRide(ride)),
   };
 };
 

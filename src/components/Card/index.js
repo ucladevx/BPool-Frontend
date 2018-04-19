@@ -3,7 +3,7 @@ import React from "react";
 import Button from "../Button";
 import { Card } from "react-materialize";
 
-class GenericCard extends React.Component {
+class RideCard extends React.Component {
   constructor(props) {
     super(props);
     this.openModal = this.openModal.bind(this);
@@ -27,4 +27,4 @@ class GenericCard extends React.Component {
     );
   }
 }
-export default GenericCard;
+export default RideCard;
