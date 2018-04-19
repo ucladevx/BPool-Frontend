@@ -6,6 +6,7 @@ import { Input, Row, Col } from "react-materialize";
 
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { push } from "react-router-redux";
 import linkState from "linkstate";
 
 import { LoginUser } from "../actions/user";
@@ -15,8 +16,8 @@ class Register extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      login: false,
-      register_car: true,
+      login: true,
+      register_car: false,
       car: {
         make: "",
         model: "",
