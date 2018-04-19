@@ -7017,6 +7017,10 @@ react-google-login@^3.1.0:
     "@types/react" "*"
     prop-types "^15.6.0"
 
+react-infinite-scroll-component@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/react-infinite-scroll-component/-/react-infinite-scroll-component-4.0.2.tgz#fb3b3d99504642bdfb15590c3a4a812955090c4b"
+
 react-input-autosize@^2.1.2:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/react-input-autosize/-/react-input-autosize-2.2.1.tgz#ec428fa15b1592994fb5f9aa15bb1eb6baf420f8"
