@@ -1,9 +1,12 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import Home from "./home.js";
-import Find from "./find.js";
-import Messages from "./messages.js";
-import Dashboard from "./dashboard.js";
+
+import Home from "./home";
+import Find from "./find";
+import Messages from "./messages";
+import Dashboard from "./dashboard";
+import DriverPanel from "./driver";
+
 import Header from "../components/Header";
 import Login from "../components/Login";
 import SidebarContent from "../components/SidebarContent";
@@ -21,6 +24,7 @@ const App = () => (
         <Route exact path="/messages" component={Messages} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/driver" component={DriverPanel} />
       </main>
 
       <Route exact path="/" component={Footer} />

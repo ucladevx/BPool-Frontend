@@ -6,16 +6,18 @@ import { Input, Row, Col } from "react-materialize";
 
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { push } from "react-router-redux";
 import linkState from "linkstate";
 
-import { LoginUser, RegisterCar } from "../actions/register";
+import { LoginUser } from "../actions/user";
+import { RegisterCar } from "../actions/car";
 
 class Register extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      login: false,
-      register_car: true,
+      login: true,
+      register_car: false,
       car: {
         make: "",
         model: "",
@@ -143,6 +145,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    changePage: async link => await dispatch(push(link)),
     login: async token => await dispatch(LoginUser(token)),
     registerCar: async car => await dispatch(RegisterCar(car)),
   };
