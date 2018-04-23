@@ -6,8 +6,7 @@ const RegisterCar = car => {
       const response = await fetch(API.car.create, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify(car),
+        body: JSON.stringify({ car }),
       });
       const status = response.status;
       const { data, error } = await response.json();

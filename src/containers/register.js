@@ -84,7 +84,7 @@ class Register extends React.Component {
                 <Row>
                   <Input
                     m={12}
-                    label="Make"
+                    label="Make *"
                     value={car.make}
                     onChange={linkState(this, "car.make")}
                   />
@@ -100,7 +100,7 @@ class Register extends React.Component {
                 <Row>
                   <Input
                     m={12}
-                    label="Year"
+                    label="Year *"
                     value={car.year}
                     onChange={linkState(this, "car.year")}
                   />
@@ -108,7 +108,7 @@ class Register extends React.Component {
                 <Row>
                   <Input
                     m={12}
-                    label="Color"
+                    label="Color *"
                     value={car.color}
                     onChange={linkState(this, "car.color")}
                   />

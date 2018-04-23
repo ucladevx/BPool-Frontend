@@ -123,7 +123,7 @@ class DriverPanel extends React.Component {
             trip={selectedTrip}
             closeModal={this.closeModal}
             delete={this.deleteRide}
-            crollbox
+            scrollbox
             driver
           />
         )}
