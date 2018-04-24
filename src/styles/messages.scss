@@ -110,6 +110,16 @@
 			overflow: auto;
 			display: flex;
 			flex-direction: column-reverse;
+			clear:both;
+
+			.loading {
+				text-align: center;
+				visibility: hidden;
+
+				.show {
+					visibility: visible;
+				}
+			}
 
 			div[class^="messages-message"] {
 				padding: 5px 10px;
@@ -147,8 +157,4 @@
 		}
 	}
 
-}
-
-.infinite-scroll {
-	border: 1px solid #000;
 }

@@ -21,7 +21,6 @@ h6 {
   font-weight: 700;
   padding: 10px 0;
   margin: 0;
-  font-size: 12px;
 }
 
 .landing {
@@ -131,6 +130,14 @@ h6 {
   overflow: auto;
   display: flex;
   flex-direction: column-reverse;
+  clear: both;
+}
+.messages-main .messages-selected .loading {
+  text-align: center;
+  visibility: hidden;
+}
+.messages-main .messages-selected .loading .show {
+  visibility: visible;
 }
 .messages-main .messages-selected div[class^="messages-message"] {
   padding: 5px 10px;
@@ -160,10 +167,6 @@ h6 {
 .messages-right .messages-detail-label {
   font-weight: bold;
   display: block;
-}
-
-.infinite-scroll {
-  border: 1px solid #000;
 }
 
 .btn {
