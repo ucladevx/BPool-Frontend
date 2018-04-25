@@ -169,10 +169,6 @@ h6 {
 }
 .messages-main .messages-selected .loading {
   text-align: center;
-  visibility: hidden;
-}
-.messages-main .messages-selected .loading .show {
-  visibility: visible;
 }
 .messages-main .messages-selected div[class^="messages-message"] {
   padding: 5px 10px;

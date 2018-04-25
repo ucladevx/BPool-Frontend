@@ -1,5 +1,6 @@
 import React from "react";
 import Pane from "./pane";
+import { Link } from "react-router-dom";
 
 // Placeholder style (it's also inline so time to do some CSS wizardry at some point)
 const styles = {
@@ -50,9 +51,9 @@ const sidebarMapping = [
 
 const renderLinks = () => {
   return sidebarMapping.map((link, index) => (
-    <a key={index} href={link.link} style={styles.sidebarLink}>
+    <Link key={index} to={link.link} style={styles.sidebarLink}>
       {link.name}
-    </a>
+    </Link>
   ));
 };
 

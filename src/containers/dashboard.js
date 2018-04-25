@@ -58,8 +58,8 @@ class Dashboard extends React.Component {
     const {} = this.props;
     const { trips, selectedTrip, modalViewing } = this.state;
 
-    const tripCards = trips.map(tripInfo => (
-      <li>
+    const tripCards = trips.map((tripInfo, index) => (
+      <li key={index}>
         <GenericCard
           date={tripInfo.date}
           price={tripInfo.price}

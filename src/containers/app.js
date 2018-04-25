@@ -14,7 +14,7 @@ import Sidebar from "react-sidebar";
 import Footer from "../components/Footer";
 
 const App = () => (
-  <Sidebar sidebar={<SidebarContent />} docked={false}>
+  <Sidebar sidebar={<SidebarContent />} docked={true}>
     <div>
       <Header loggedIn={false} />
 

@@ -170,11 +170,13 @@ class Messages extends React.Component {
     );
   };
 
-  handleScroll = e => {
-    if (e.target.scrollTop === 0) {
+  handleScroll = async e => {
+    console.log(this.state);
+    if (e.target.scrollTop === 0 && this.state.lastMessageId !== 0) {
       this.setState({
         isLoading: true,
       });
+      e.persist(); // allows us to use the event after fetching new messages
       this.fetchNewMessages(this.state.lastMessageId, e.target);
     }
   };
@@ -240,7 +242,14 @@ class Messages extends React.Component {
               onScroll={this.handleScroll.bind(this)}
             >
               {this.renderSelectedMessages(this.state.selectedMessages)}
-              {/*<div className={`loading ${this.state.isLoading ? 'show' : ''}`}>Loading...</div>*/}
+              <div
+                className="loading"
+                style={{
+                  display: `${this.state.isLoading ? "table" : "none"}`,
+                }}
+              >
+                Loading...
+              </div>
             </div>
 
             <div className="messages-send-message">

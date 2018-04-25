@@ -143,11 +143,6 @@
 
 			.loading {
 				text-align: center;
-				visibility: hidden;
-
-				.show {
-					visibility: visible;
-				}
 			}
 
 			div[class^="messages-message"] {
