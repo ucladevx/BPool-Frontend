@@ -22,6 +22,7 @@ class Messages extends React.Component {
       lastMessageId: props.lastMessageId,
       message: "",
       isLoading: false,
+      panel: 0,
     };
   }
 
@@ -43,6 +44,7 @@ class Messages extends React.Component {
     this.setState(
       {
         selectedMessages: [],
+        panel: 1,
       },
       () => {
         this.setState(
@@ -177,11 +179,21 @@ class Messages extends React.Component {
     }
   };
 
+  changePanel = panel => {
+    this.setState({
+      panel,
+    });
+  };
+
   render() {
     return (
       <div>
         <div className="messages">
-          <div className="messages-left">
+          <div
+            className={`messages-left ${
+              this.state.panel === 0 ? "" : "messages-hidden"
+            }`}
+          >
             <h5 className="messages-title">Messages</h5>
             <Input
               placeholder="Search People"
@@ -195,10 +207,32 @@ class Messages extends React.Component {
             </div>
           </div>
 
-          <div className="messages-main">
-            <Link to="/profile/rishub">
-              <h5 className="messages-title">{this.state.selectedName}</h5>
-            </Link>
+          <div
+            className={`messages-main ${
+              this.state.panel === 1 ? "" : "messages-hidden"
+            }`}
+          >
+            <div className="messages-top">
+              <span
+                className="back"
+                onClick={() => this.changePanel(this.state.panel - 1)}
+              >
+                <i className="material-icons">chevron_left</i>
+                <span>Back</span>
+              </span>
+              <Link to="/profile/rishub">
+                <h5 className="messages-title messages-name">
+                  {this.state.selectedName}
+                </h5>
+              </Link>
+              <span
+                className="next"
+                onClick={() => this.changePanel(this.state.panel + 1)}
+              >
+                <span>Details</span>
+                <i className="material-icons">info_outline</i>
+              </span>
+            </div>
 
             <div
               className="messages-selected"
@@ -219,8 +253,21 @@ class Messages extends React.Component {
             </div>
           </div>
 
-          <div className="messages-right">
-            <h5 className="messages-title">Details</h5>
+          <div
+            className={`messages-right ${
+              this.state.panel === 2 ? "" : "messages-hidden"
+            }`}
+          >
+            <div className="messages-top">
+              <span
+                className="back"
+                onClick={() => this.changePanel(this.state.panel - 1)}
+              >
+                <i className="material-icons">chevron_left</i>
+                <span>Back</span>
+              </span>
+              <h5 className="messages-title">Details</h5>
+            </div>
 
             <div className="messsages-details">
               <div className="messages-detail">
