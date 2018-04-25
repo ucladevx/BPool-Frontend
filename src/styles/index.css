@@ -323,3 +323,33 @@ h6 {
 .input .Select-menu > div {
   color: #26a69a;
 }
+
+.sidebar {
+  width: 200px;
+  height: 100%;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
+    Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+}
+.sidebar-header {
+  background-color: #6200ea;
+  color: white;
+  padding: 16px;
+  font-size: 1.5em;
+}
+.sidebar-content {
+  padding: 16px;
+  height: 100%;
+  background-color: "white";
+}
+.sidebar-divider {
+  margin: 8px 0;
+  height: 1px;
+  background-color: #757575;
+}
+.sidebar-link {
+  display: block;
+  padding: 16px 0px;
+  color: #757575;
+  text-decoration: "none";
+}

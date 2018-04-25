@@ -2,30 +2,6 @@ import React from "react";
 import Pane from "./pane";
 import { Link } from "react-router-dom";
 
-// Placeholder style (it's also inline so time to do some CSS wizardry at some point)
-const styles = {
-  sidebar: {
-    width: 200,
-    height: "100%",
-  },
-  sidebarLink: {
-    display: "block",
-    padding: "16px 0px",
-    color: "#757575",
-    textDecoration: "none",
-  },
-  divider: {
-    margin: "8px 0",
-    height: 1,
-    backgroundColor: "#757575",
-  },
-  content: {
-    padding: "16px",
-    height: "100%",
-    backgroundColor: "white",
-  },
-};
-
 const sidebarMapping = [
   {
     name: "Home",
@@ -49,27 +25,23 @@ const sidebarMapping = [
   },
 ];
 
-const renderLinks = () => {
-  return sidebarMapping.map((link, index) => (
-    <Link key={index} to={link.link} style={styles.sidebarLink}>
+const renderLinks = () =>
+  sidebarMapping.map((link, index) => (
+    <Link key={index} to={link.link} className="sidebar-link">
       {link.name}
     </Link>
   ));
-};
 
-const SidebarContent = props => {
-  const style = props.style
-    ? { ...styles.sidebar, ...props.style }
-    : styles.sidebar;
-
-  return (
-    <Pane title={props.username ? props.username : "Username"} style={style}>
-      <div style={styles.content}>
-        <div style={styles.divider} />
-        {renderLinks()}
-      </div>
-    </Pane>
-  );
-};
+const SidebarContent = props => (
+  <Pane
+    title={props.username ? props.username : "Username"}
+    style={props.style}
+  >
+    <div className="sidebar-content">
+      <div className="sidebar-divider" />
+      {renderLinks()}
+    </div>
+  </Pane>
+);
 
 export default SidebarContent;
