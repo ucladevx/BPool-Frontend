@@ -68,6 +68,7 @@ class Dashboard extends React.Component {
     const tripCards = trips.map(tripInfo => (
       <li>
         <RideCard
+
           date={tripInfo.date}
           price={tripInfo.price}
           start={tripInfo.start}

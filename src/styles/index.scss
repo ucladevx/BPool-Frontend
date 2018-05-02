@@ -17,7 +17,6 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: 700;
 	padding: 10px 0;
 	margin: 0;
-  font-size: 12px;
 }
 
 @import './landing.scss';
@@ -29,3 +28,4 @@ h1, h2, h3, h4, h5, h6 {
 @import '../components/Search/style.scss';
 @import '../components/SelectInput/style.scss';
 @import '../components/Modal/style.scss';
+@import '../components/SidebarContent/style.scss';
