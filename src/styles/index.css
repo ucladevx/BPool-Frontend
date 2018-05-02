@@ -350,6 +350,14 @@ h6 {
   color: #26a69a;
 }
 
+.input-field.col label {
+  left: 0;
+}
+
+.button .delete {
+  background-color: red;
+}
+
 .sidebar {
   width: 200px;
   height: 100%;
