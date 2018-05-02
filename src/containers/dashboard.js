@@ -64,7 +64,7 @@ class Dashboard extends React.Component {
 
     const upcomingCards = upcomingTrips.map(tripInfo => (
       <div className="card_container">
-        <GenericCard
+        <RideCard
           date={tripInfo.date}
           price={tripInfo.price}
           start={tripInfo.start}
@@ -77,7 +77,7 @@ class Dashboard extends React.Component {
 
     const pastCards = pastTrips.map(tripInfo => (
       <div className="card_container">
-        <GenericCard
+        <RideCard
           date={tripInfo.date}
           price={tripInfo.price}
           start={tripInfo.start}
