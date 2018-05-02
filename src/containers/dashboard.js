@@ -11,10 +11,9 @@ class Dashboard extends React.Component {
     super(props);
     // TODO: Flesh out ride object
     this.state = {
-      trips: [],
-      selectedTrip: {
-        info: "",
-      },
+      upcomingTrips: [],
+      pastTrips: [],
+      selectedTrip: {},
       modalViewing: false,
     };
 
@@ -29,9 +28,14 @@ class Dashboard extends React.Component {
 
   async listRides() {
     // TODO fetch all trips
+    // This is a call to a users previous rides
     this.setState({
-      trips: [
+      upcomingTrips: [
         { date: "INSERT DATE HERE", start: "UCLA", dest: "UCB", price: 11 },
+        { date: "INSERT DATE HERE", start: "UCB", dest: "UCLA", price: 15 },
+      ],
+      pastTrips: [
+        { date: "INSERT DATE HERE", start: "UCB", dest: "UCLA", price: 5 },
       ],
     });
   }
@@ -56,12 +60,11 @@ class Dashboard extends React.Component {
 
   render() {
     const {} = this.props;
-    const { trips, selectedTrip, modalViewing } = this.state;
+    const { upcomingTrips, pastTrips, selectedTrip, modalViewing } = this.state;
 
-    const tripCards = trips.map(tripInfo => (
-      <li>
+    const upcomingCards = upcomingTrips.map(tripInfo => (
+      <div className="card-container">
         <RideCard
-
           date={tripInfo.date}
           price={tripInfo.price}
           start={tripInfo.start}
@@ -69,7 +72,20 @@ class Dashboard extends React.Component {
           getByID={this.getRideByID}
           id={tripInfo.id}
         />
-      </li>
+      </div>
+    ));
+
+    const pastCards = pastTrips.map(tripInfo => (
+      <div className="card-container">
+        <RideCard
+          date={tripInfo.date}
+          price={tripInfo.price}
+          start={tripInfo.start}
+          dest={tripInfo.dest}
+          getByID={this.getRideByID}
+          id={tripInfo.id}
+        />
+      </div>
     ));
     return (
       <div className="dashboard container">
@@ -80,7 +96,10 @@ class Dashboard extends React.Component {
             scrollbox
           />
         )}
-        <ul>{tripCards}</ul>
+        <h2> Your Upcoming Trips </h2>
+        <div className="cards">{upcomingCards}</div>
+        <h2> Your Past Trips </h2>
+        <div className="cards">{pastCards}</div>
       </div>
     );
   }

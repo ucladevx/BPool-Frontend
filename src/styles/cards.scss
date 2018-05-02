@@ -1,0 +1,11 @@
+.cards {
+	display: flex;
+  flex-wrap: wrap;
+
+	.card-container{
+		flex-basis: 50%;
+		@media only screen and (max-width: 900px) {
+		   flex-basis: 100%;
+		}
+	}
+}
