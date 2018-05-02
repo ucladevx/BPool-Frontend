@@ -1,6 +1,6 @@
 const api_base = "http://localhost:3001/api/v1";
 
-const car_base = `${api_base}/cars"`;
+const car_base = `${api_base}/cars`;
 const rating_base = `${api_base}/ratings`;
 const ride_base = `${api_base}/rides`;
 const user_base = `${api_base}/users`;

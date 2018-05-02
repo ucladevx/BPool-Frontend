@@ -3,16 +3,24 @@ import API from "../config/api";
 const RegisterCar = car => {
   return async dispatch => {
     try {
+      const newCar = {
+        ...car,
+        year: parseInt(car.year),
+      };
       const response = await fetch(API.car.create, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
-        body: JSON.stringify(car),
+        body: JSON.stringify(newCar),
       });
       const status = response.status;
-      const data = await response.json();
-      const err = status >= 200 && status < 300;
-      return { err, data };
+      const { data, error } = await response.json();
+      const err = status < 200 || status >= 300;
+      if (err) {
+        throw new Error(error);
+      } else {
+        return { err, data };
+      }
     } catch (e) {
       return {
         err: e.message,
