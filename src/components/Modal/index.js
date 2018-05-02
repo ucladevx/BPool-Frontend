@@ -25,8 +25,10 @@ class RideModal extends React.Component {
   }
 
   async delete() {
-    await this.props.delete(this.state.trip.id);
-    this.props.refresh();
+    // TODO: should ask the user again if they are sure if they want to delete
+    // TODO: write the functions below, pass them in as props, then uncomment these two lines
+    // await this.props.delete(this.state.trip.id);
+    // this.props.refresh();
   }
 
   edit() {
@@ -109,13 +111,13 @@ class RideModal extends React.Component {
                     onClick={this.delete}
                   />
                 )}
-                {!driver && (
+                {/*!driver && (
                   <Button
-                    className="delete"
                     label="Contact driver"
                     onClick={this.delete}
                   />
-                )}
+                )*/
+                /* TODO: probably shouldn't be this.delete for contact driver? */}
               </Col>
               <Col>{driver && <Button label="Edit" onClick={this.edit} />}</Col>
             </div>

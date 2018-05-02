@@ -140,7 +140,7 @@ export const messages = [
     ],
   },
   {
-    name: "Shivaum Kumar",
+    name: "Rishub Kumar 2",
     messages: [
       {
         message: "hi",
