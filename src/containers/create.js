@@ -130,7 +130,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    changePage: async link => await dispatch(push(link)),
+    changePage: link => dispatch(push(link)),
     createRide: async ride => await dispatch(CreateRide(ride)),
   };
 };

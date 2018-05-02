@@ -16,13 +16,12 @@ class RideCard extends React.Component {
   render() {
     const { date, price, start, dest, driver } = this.props;
     return (
-      <Card>
+      <Card onClick={this.openModal}>
         {date} <span style={{ float: "right" }}> {price} </span>
         <h3>
           {" "}
           {start} to {dest}{" "}
         </h3>
-        <Button label="View" onClick={this.openModal} />
       </Card>
     );
   }

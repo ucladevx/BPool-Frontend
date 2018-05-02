@@ -3,7 +3,10 @@ import API from "../config/api";
 const RegisterCar = car => {
   return async dispatch => {
     try {
-      const newCar = Object.assign({}, car, { year: parseInt(car.year) });
+      const newCar = {
+        ...car,
+        year: parseInt(car.year),
+      };
       const response = await fetch(API.car.create, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

@@ -36,7 +36,7 @@ class RideModal extends React.Component {
     this.props.refresh();
   }
 
-  async edit() {
+  edit() {
     this.setState({
       editing: true,
     });
