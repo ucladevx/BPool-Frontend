@@ -1,6 +1,5 @@
 import React from "react";
 import { Route } from "react-router-dom";
-
 import CreatePanel from "./create";
 import Dashboard from "./dashboard";
 import DriverPanel from "./driver";
@@ -19,7 +18,6 @@ const App = () => (
   <Sidebar sidebar={<SidebarContent />} docked={true}>
     <div>
       <Header loggedIn={false} />
-
       <main>
         <Route exact path="/" component={Home} />
         <Route exact path="/find" component={Find} />
