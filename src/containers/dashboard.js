@@ -12,10 +12,10 @@ class Dashboard extends React.Component {
     // TODO: Flesh out ride object
     this.state = {
       trips: [],
+      modalVisible: false,
       selectedTrip: {
         info: "",
       },
-      modalViewing: false,
     };
 
     this.closeModal = this.closeModal.bind(this);
@@ -38,7 +38,7 @@ class Dashboard extends React.Component {
 
   async getRideByID(id) {
     // TODO: fetch specific ride
-    this.setState({
+    await this.setState({
       selectedTrip: {
         seats: 3,
         start_city: "Los Angeles",
@@ -48,27 +48,27 @@ class Dashboard extends React.Component {
         end_dest_lat: "2",
         end_dest_lon: "2",
         price_per_seat: 20,
-        info: "Hi",
+        info:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at lectus sed odio ornare auctor ac eget massa. Aliquam erat volutpat. Donec placerat risus leo, vel aliquet neque venenatis nec. Sed pulvinar sed urna sagittis eleifend. Fusce quam libero, sagittis quis metus placerat, volutpat mattis mi. Cras sit amet metus tincidunt, tempus dui id, blandit urna. Sed ipsum nibh, dignissim nec enim sed, vehicula condimentum odio. Sed malesuada malesuada magna in dignissim. Ut pellentesque malesuada augue, ac convallis nunc ultrices sit amet. Phasellus laoreet, enim ut congue accumsan, leo mi gravida arcu, sed consectetur augue sem maximus augue. Curabitur sed vulputate justo, vel lacinia quam.",
       },
-      modalViewing: true,
+      modalVisible: true,
     });
   }
 
   async closeModal() {
     this.setState({
+      modalVisible: false,
       selectedTrip: {},
-      modalViewing: false,
     });
   }
 
   render() {
     const {} = this.props;
-    const { trips, selectedTrip, modalViewing } = this.state;
+    const { trips, selectedTrip, modalVisible } = this.state;
 
     const tripCards = trips.map(tripInfo => (
       <li>
         <RideCard
-
           date={tripInfo.date}
           price={tripInfo.price}
           start={tripInfo.start}
@@ -80,13 +80,11 @@ class Dashboard extends React.Component {
     ));
     return (
       <div className="dashboard container">
-        {modalViewing && (
-          <RideModal
-            trip={selectedTrip}
-            closeModal={this.closeModal}
-            scrollbox
-          />
-        )}
+        <RideModal
+          visible={modalVisible}
+          trip={selectedTrip}
+          closeModal={this.closeModal}
+        />
         <ul>{tripCards}</ul>
       </div>
     );

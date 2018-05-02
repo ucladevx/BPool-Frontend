@@ -23,10 +23,11 @@ class DriverPanel extends React.Component {
     this.state = {
       trips: [],
       selectedTrip: {},
-      tripViewing: false,
+      modalVisible: false,
       err: false,
     };
 
+    this.closeModal = this.closeModal.bind(this);
     this.listRides = this.listRides.bind(this);
     this.getRideByID = this.getRideByID.bind(this);
     this.updateRide = this.updateRide.bind(this);
@@ -52,11 +53,11 @@ class DriverPanel extends React.Component {
         end_dest_lat: "2",
         end_dest_lon: "2",
         price_per_seat: 20,
-        info: "Hi",
+        info:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at lectus sed odio ornare auctor ac eget massa. Aliquam erat volutpat. Donec placerat risus leo, vel aliquet neque venenatis nec. Sed pulvinar sed urna sagittis eleifend. Fusce quam libero, sagittis quis metus placerat, volutpat mattis mi. Cras sit amet metus tincidunt, tempus dui id, blandit urna. Sed ipsum nibh, dignissim nec enim sed, vehicula condimentum odio. Sed malesuada malesuada magna in dignissim. Ut pellentesque malesuada augue, ac convallis nunc ultrices sit amet. Phasellus laoreet, enim ut congue accumsan, leo mi gravida arcu, sed consectetur augue sem maximus augue. Curabitur sed vulputate justo, vel lacinia quam.",
       },
-      modalViewing: true,
+      modalVisible: true,
     });
-    å;
   }
 
   async updateRide() {
@@ -81,13 +82,20 @@ class DriverPanel extends React.Component {
     });
   }
 
+  async closeModal() {
+    this.setState({
+      modalVisible: false,
+      selectedTrip: {},
+    });
+  }
+
   componentDidMount() {
     this.listRides();
   }
 
   render() {
     const {} = this.props;
-    const { trips, selectedTrip, tripViewing, err } = this.state;
+    const { trips, selectedTrip, modalVisible, err } = this.state;
 
     const tripCards = trips.map(tripInfo => (
       <li>
@@ -120,15 +128,13 @@ class DriverPanel extends React.Component {
           <h2> Upcoming rides </h2>
           {tripCards}
         </Row>
-        {tripViewing && (
-          <RideModal
-            trip={selectedTrip}
-            closeModal={this.closeModal}
-            delete={this.deleteRide}
-            scrollbox
-            driver
-          />
-        )}
+        <RideModal
+          trip={selectedTrip}
+          visible={modalVisible}
+          closeModal={this.closeModal}
+          delete={this.deleteRide}
+          driver
+        />
       </div>
     );
   }
