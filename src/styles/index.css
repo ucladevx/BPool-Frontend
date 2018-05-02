@@ -50,6 +50,12 @@ h6 {
   display: flex;
   flex-flow: column;
 }
+@media only screen and (max-width: 600px) {
+  .messages-left {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}
 .messages-left .input-field {
   width: 80%;
   margin: 0 auto;
@@ -70,8 +76,10 @@ h6 {
 .messages-left .messages-box-wrapper {
   padding: 7px;
 }
-.messages-left .selected {
-  background-color: rgba(0, 0, 0, 0.1);
+@media only screen and (min-width: 600px) {
+  .messages-left .selected {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
 }
 .messages-left .messages-box {
   display: flex;
@@ -100,6 +108,33 @@ h6 {
   text-overflow: ellipsis;
   opacity: 0.6;
 }
+.messages-top {
+  position: relative;
+}
+.messages-top .back,
+.messages-top .next {
+  position: absolute;
+  top: 0;
+}
+@media only screen and (min-width: 600px) {
+  .messages-top .back,
+  .messages-top .next {
+    display: none;
+  }
+}
+.messages-top .back {
+  left: 0;
+}
+.messages-top .next {
+  right: 0;
+}
+.messages-top i {
+  vertical-align: middle;
+  line-height: 2em;
+}
+.messages-top a {
+  text-decoration: underline;
+}
 .messages-main {
   flex-basis: 50%;
   max-width: 50%;
@@ -108,11 +143,11 @@ h6 {
   flex-direction: column;
   flex: 1 1 auto;
 }
-.messages-main a {
-  color: #000;
-}
-.messages-main a:hover {
-  text-decoration: underline;
+@media only screen and (max-width: 600px) {
+  .messages-main {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
 }
 .messages-main .input-field {
   padding-right: 10px;
@@ -130,6 +165,10 @@ h6 {
   overflow: auto;
   display: flex;
   flex-direction: column-reverse;
+  clear: both;
+}
+.messages-main .messages-selected .loading {
+  text-align: center;
 }
 .messages-main .messages-selected div[class^="messages-message"] {
   padding: 5px 10px;
@@ -153,12 +192,23 @@ h6 {
   display: flex;
   flex-flow: column;
 }
+@media only screen and (max-width: 600px) {
+  .messages-right {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}
 .messages-right .messages-detail {
   padding: 10px 0;
 }
 .messages-right .messages-detail-label {
   font-weight: bold;
   display: block;
+}
+@media only screen and (max-width: 600px) {
+  .messages-hidden {
+    display: none;
+  }
 }
 
 .cards {
@@ -285,4 +335,34 @@ h6 {
 }
 .input .Select-menu > div {
   color: #26a69a;
+}
+
+.sidebar {
+  width: 200px;
+  height: 100%;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
+    Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+}
+.sidebar-header {
+  background-color: #6200ea;
+  color: white;
+  padding: 16px;
+  font-size: 1.5em;
+}
+.sidebar-content {
+  padding: 16px;
+  height: 100%;
+  background-color: "white";
+}
+.sidebar-divider {
+  margin: 8px 0;
+  height: 1px;
+  background-color: #757575;
+}
+.sidebar-link {
+  display: block;
+  padding: 16px 0px;
+  color: #757575;
+  text-decoration: "none";
 }

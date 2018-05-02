@@ -12,6 +12,11 @@
 	&-left {
 		flex-basis: 30%;
 		max-width: 30%;
+		@media only screen and (max-width: 600px) {
+			flex-basis: 100%;
+			max-width: 100%;
+		}
+
 		border: 1px solid rgba(102,102,102,0.3);
 		display: flex;
 		flex-flow: column;
@@ -39,7 +44,9 @@
 			padding: 7px;
 		}
 		.selected {
-			background-color: rgba(0, 0, 0, .1)
+			@media only screen and (min-width: 600px) {
+				background-color: rgba(0, 0, 0, .1);
+			}
 		}
 		.messages-box {
 			display: flex;
@@ -76,6 +83,31 @@
 		}
 	}
 
+	&-top {
+		position: relative;
+
+		.back, .next {
+			position: absolute;
+			top: 0;
+
+			@media only screen and (min-width: 600px) {
+				display: none;
+			}
+		}
+		.back { left: 0; }
+		.next { right: 0; }
+
+		i {
+			vertical-align: middle;
+			line-height: 2em;
+			// color: #6200EA;
+		}
+
+		a {
+			text-decoration: underline;
+		}
+	}
+
 	&-main {
 		flex-basis: 50%;
 		max-width: 50%;
@@ -84,12 +116,9 @@
 		flex-direction: column;
 		flex: 1 1 auto;
 
-		a {
-			color: #000;
-
-			&:hover {
-				text-decoration: underline;
-			}
+		@media only screen and (max-width: 600px) {
+			flex-basis: 100%;
+			max-width: 100%;
 		}
 
 		.input-field {
@@ -110,6 +139,11 @@
 			overflow: auto;
 			display: flex;
 			flex-direction: column-reverse;
+			clear:both;
+
+			.loading {
+				text-align: center;
+			}
 
 			div[class^="messages-message"] {
 				padding: 5px 10px;
@@ -136,6 +170,10 @@
 		border: 1px solid rgba(102,102,102,0.3);
 		display: flex;
 		flex-flow: column;
+		@media only screen and (max-width: 600px) {
+			flex-basis: 100%;
+			max-width: 100%;
+		}
 
 		.messages-detail {
 			padding: 10px 0;
@@ -147,4 +185,9 @@
 		}
 	}
 
+	&-hidden {
+		@media only screen and (max-width: 600px) {
+			display: none;
+		}
+	}
 }
