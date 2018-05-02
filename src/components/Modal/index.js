@@ -62,7 +62,7 @@ class RideModal extends React.Component {
   }
 
   render() {
-    const { scrollbox, driver, visible } = this.props;
+    const { scrollbox, driver } = this.props;
     const { trip, form, editing } = this.state;
 
     return (
