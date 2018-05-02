@@ -52,11 +52,9 @@ class RideModal extends React.Component {
   render() {
     const { trip, scrollbox, driver } = this.props;
     const { form, editing } = this.state;
-    const { info } = trip;
     return (
       <Modal open>
         <Button id="close-button" onClick={this.closeModal} label="Close" />
-        {info}
         {driver && <Button label="Delete" onClick={this.delete} />}
         {!editing && driver && <Button label="Edit" onClick={this.edit} />}
         {editing && driver && <Button label="Save" onClick={this.save} />}

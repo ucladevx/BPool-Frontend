@@ -38,10 +38,17 @@ class Dashboard extends React.Component {
 
   async getRideByID(id) {
     // TODO: fetch specific ride
-    console.log(this.state.modalViewing);
     this.setState({
       selectedTrip: {
-        info: "INSERT INFO HERE",
+        seats: 3,
+        start_city: "Los Angeles",
+        end_city: "San Jose",
+        start_dest_lat: "1",
+        start_dest_lon: "1",
+        end_dest_lat: "2",
+        end_dest_lon: "2",
+        price_per_seat: 20,
+        info: "Hi",
       },
       modalViewing: true,
     });

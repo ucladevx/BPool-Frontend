@@ -34,27 +34,29 @@ class DriverPanel extends React.Component {
   }
 
   async listRides() {
-    const { err, data } = await this.props.listRides();
-    if (err) {
-      this.setState({ err });
-      return;
-    }
     this.setState({
-      err: false,
-      rides: data,
+      trips: [
+        { date: "INSERT DATE HERE", start: "UCLA", dest: "UCB", price: 11 },
+      ],
     });
   }
 
   async getRideByID(id) {
-    const { err, data } = await this.props.getRideByID(id);
-    if (err) {
-      this.setState({ err });
-      return;
-    }
     this.setState({
-      err: false,
-      selectedRide: data,
+      selectedTrip: {
+        seats: 3,
+        start_city: "Los Angeles",
+        end_city: "San Jose",
+        start_dest_lat: "1",
+        start_dest_lon: "1",
+        end_dest_lat: "2",
+        end_dest_lon: "2",
+        price_per_seat: 20,
+        info: "Hi",
+      },
+      modalViewing: true,
     });
+    å;
   }
 
   async updateRide() {
