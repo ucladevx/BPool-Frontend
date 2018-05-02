@@ -4,6 +4,7 @@ import Button from "../Button";
 
 import Modal from "react-responsive-modal";
 import { Row, Col, Input } from "react-materialize";
+import linkState from "linkstate";
 
 class RideModal extends React.Component {
   constructor(props) {
@@ -52,15 +53,6 @@ class RideModal extends React.Component {
     });
   }
 
-  handleFormChange(value) {
-    this.setState({
-      form: {
-        ...this.state.form,
-        ...value,
-      },
-    });
-  }
-
   render() {
     const { scrollbox, driver } = this.props;
     const { trip, form, editing } = this.state;
@@ -76,20 +68,18 @@ class RideModal extends React.Component {
             <Input
               label="Price per seat"
               defaultValue={form.price_per_seat}
-              onChange={(e, value) =>
-                this.handleFormChange({ price_per_seat: value })
-              }
+              onChange={linkState(this, "form.price_per_seat")}
             />
             <Input
               label="# Seats Available"
               defaultValue={form.seats}
-              onChange={(e, value) => this.handleFormChange({ seats: value })}
+              onChange={linkState(this, "form.seats")}
             />
             <Input
               type="textarea"
               label="Trip Info"
               defaultValue={form.info}
-              onChange={(e, value) => this.handleFormChange({ info: value })}
+              onChange={linkState(this, "form.info")}
             />
           </div>
         ) : (
