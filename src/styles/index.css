@@ -274,16 +274,13 @@ h6 {
 .card-div {
   margin-right: 10px;
 }
-
-.date-span {
+.card-div .date-span {
   float: right;
 }
-
-.content-div {
+.card-div .content-div {
   font-size: 2.57em;
 }
-
-.inner-span {
+.card-div .content-div .inner-span {
   color: #7c4dff;
 }
 
