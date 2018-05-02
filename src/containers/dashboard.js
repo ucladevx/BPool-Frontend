@@ -71,8 +71,8 @@ class Dashboard extends React.Component {
 
     const { upcomingTrips, pastTrips, selectedTrip, modalVisible } = this.state;
 
-    const upcomingCards = upcomingTrips.map(tripInfo => (
-      <div className="card-container">
+    const upcomingCards = upcomingTrips.map((tripInfo, index) => (
+      <div className="card-container" key={index}>
         <RideCard
           date={tripInfo.date}
           price={tripInfo.price}
@@ -85,11 +85,13 @@ class Dashboard extends React.Component {
     ));
     return (
       <div className="dashboard container">
-        <RideModal
-          visible={modalVisible}
-          trip={selectedTrip}
-          closeModal={this.closeModal}
-        />
+        {modalVisible && (
+          <RideModal
+            trip={selectedTrip}
+            closeModal={this.closeModal}
+            driver={true}
+          />
+        )}
         <ul>{upcomingCards}</ul>
       </div>
     );

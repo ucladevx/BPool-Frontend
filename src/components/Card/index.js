@@ -21,8 +21,9 @@ class RideCard extends React.Component {
           {date} <span className="date-span"> ${price} </span>
           <div className="content-div">
             {" "}
-            <span className="inner-span"> {start} </span> to{" "}
-            <span className="inner-span"> {dest} </span>{" "}
+            <span className="inner-span">
+              {start} to {dest}
+            </span>
           </div>
         </Card>
       </div>
