@@ -2,11 +2,13 @@ import React from "react";
 
 import Button from "../components/Button";
 import { Input, Row, Col } from "react-materialize";
+import SelectInput from "../components/SelectInput";
 
 import { Link } from "react-router-dom";
 import { push } from "react-router-redux";
 import { connect } from "react-redux";
 import linkState from "linkstate";
+import cities from "../config/cities";
 
 import { CreateRide } from "../actions/ride";
 
@@ -52,7 +54,7 @@ class CreatePanel extends React.Component {
     const { ride, err } = this.state;
     return (
       <div className="create container">
-        <Row>
+        {/*<Row>
           <Input
             m={12}
             label="Number of available seats"
@@ -77,7 +79,34 @@ class CreatePanel extends React.Component {
             value={ride.price_per_seat}
             onChange={linkState(this, "ride.price_per_seat")}
           />
-        </Row>
+        </Row>*/}
+        <SelectInput
+          materialIcon="person_pin"
+          label="Origin"
+          value={this.state.source}
+          placeholder="Choose your origin"
+          onChange={e => this.handleChange(e, "source")}
+          options={cities}
+        />
+
+        <SelectInput
+          materialIcon="pin_drop"
+          label="Destination"
+          value={this.state.destination}
+          placeholder="Choose your destination"
+          onChange={e => this.handleChange(e, "destination")}
+          options={cities}
+        />
+
+        <div className="input">
+          <i className="material-icons prefix">date_range</i>
+          <Input
+            placeholder="Date"
+            type="date"
+            onChange={e => this.handleChange({ value: e.timeStamp }, "date")}
+          />
+        </div>
+
         <Row>
           <Col m={2} offset="m2">
             <Link to="/driver">

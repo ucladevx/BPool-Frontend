@@ -6,6 +6,7 @@ const LoginUser = token => {
       const response = await fetch(API.user.login, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify({ token }),
       });
       const status = response.status;
