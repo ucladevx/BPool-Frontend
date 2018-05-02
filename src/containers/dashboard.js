@@ -11,7 +11,6 @@ class Dashboard extends React.Component {
     super(props);
     // TODO: Flesh out ride object
     this.state = {
-
       upcomingTrips: [],
       pastTrips: [],
       selectedTrip: {},
@@ -75,7 +74,6 @@ class Dashboard extends React.Component {
     const upcomingCards = upcomingTrips.map(tripInfo => (
       <div className="card-container">
         <RideCard
-
           date={tripInfo.date}
           price={tripInfo.price}
           start={tripInfo.start}
@@ -92,8 +90,7 @@ class Dashboard extends React.Component {
           trip={selectedTrip}
           closeModal={this.closeModal}
         />
-        <ul>{tripCards}</ul>
-
+        <ul>{upcomingCards}</ul>
       </div>
     );
   }
