@@ -50,7 +50,7 @@ class Rides extends React.Component {
     const { trips, selectedTrip, modalViewing } = this.state;
 
     const tripCards = trips.map(tripInfo => (
-      <div className="card_container">
+      <div className="card-container">
         <GenericCard
           date={tripInfo.date}
           price={tripInfo.price}

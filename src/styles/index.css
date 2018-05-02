@@ -215,11 +215,11 @@ h6 {
   display: flex;
   flex-wrap: wrap;
 }
-.cards .card_container {
+.cards .card-container {
   flex-basis: 50%;
 }
 @media only screen and (max-width: 900px) {
-  .cards .card_container {
+  .cards .card-container {
     flex-basis: 100%;
   }
 }
@@ -269,6 +269,22 @@ h6 {
   text-decoration: none;
   color: black;
   font-weight: 700;
+}
+
+.card-div {
+  margin-right: 10px;
+}
+
+.date-span {
+  float: right;
+}
+
+.content-div {
+  font-size: 2.57em;
+}
+
+.inner-span {
+  color: #7c4dff;
 }
 
 .search {
