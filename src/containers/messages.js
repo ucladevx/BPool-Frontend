@@ -171,7 +171,6 @@ class Messages extends React.Component {
   };
 
   handleScroll = async e => {
-    console.log(this.state);
     if (e.target.scrollTop === 0 && this.state.lastMessageId !== 0) {
       this.setState({
         isLoading: true,

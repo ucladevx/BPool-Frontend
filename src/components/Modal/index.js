@@ -58,7 +58,7 @@ class RideModal extends React.Component {
     const { trip, form, editing } = this.state;
 
     return (
-      <Modal onClose={this.closeModal} open={true}>
+      <Modal styles={{ padding: "2rem" }} onClose={this.closeModal} open={true}>
         <h2>
           {trip.start_city} to {trip.end_city}
         </h2>
