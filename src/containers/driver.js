@@ -128,13 +128,14 @@ class DriverPanel extends React.Component {
           <h2> Upcoming rides </h2>
           {tripCards}
         </Row>
-        <RideModal
-          trip={selectedTrip}
-          visible={modalVisible}
-          closeModal={this.closeModal}
-          delete={this.deleteRide}
-          driver
-        />
+        {modalVisible && (
+          <RideModal
+            trip={selectedTrip}
+            closeModal={this.closeModal}
+            delete={this.deleteRide}
+            driver
+          />
+        )}
       </div>
     );
   }
