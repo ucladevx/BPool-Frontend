@@ -9,6 +9,7 @@ import linkState from "linkstate";
 class RideModal extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props.trip);
     this.state = {
       trip: props.trip,
       form: props.trip,
@@ -54,11 +55,15 @@ class RideModal extends React.Component {
   }
 
   render() {
-    const { scrollbox, driver } = this.props;
+    const { scrollbox, driver, visible } = this.props;
     const { trip, form, editing } = this.state;
 
     return (
-      <Modal styles={{ padding: "2rem" }} onClose={this.closeModal} open={true}>
+      <Modal
+        styles={{ padding: "2rem" }}
+        onClose={this.closeModal}
+        open={visible}
+      >
         <h2>
           {trip.start_city} to {trip.end_city}
         </h2>
@@ -101,13 +106,11 @@ class RideModal extends React.Component {
                     onClick={this.delete}
                   />
                 )}
-                {/*!driver && (
-                  <Button
-                    label="Contact driver"
-                    onClick={this.delete}
-                  />
-                )*/
-                /* TODO: probably shouldn't be this.delete for contact driver? */}
+                {!driver && (
+                  <Button label="Contact driver" onClick={this.delete} />
+                )
+                /* TODO: probably shouldn't be this.delete for contact driver? */
+                }
               </Col>
               <Col>{driver && <Button label="Edit" onClick={this.edit} />}</Col>
             </div>

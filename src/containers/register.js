@@ -79,7 +79,7 @@ class Register extends React.Component {
             )}
             {register_car && (
               <div className="register-car">
-                <h4>Optional: You may register as driver.</h4>
+                <h4>Optional: You may register as a driver.</h4>
                 <h5>Please enter your car details.</h5>
                 <Row>
                   <Input

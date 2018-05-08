@@ -12,7 +12,7 @@ class Landing extends React.Component {
   }
   render() {
     const { loggedIn, isDriver } = this.props;
-
+    console.log(loggedIn);
     const onFindClick = loggedIn
       ? () => this.props.changePage("/find")
       : () => this.props.changePage("/register");

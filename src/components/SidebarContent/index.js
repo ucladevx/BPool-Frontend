@@ -23,6 +23,10 @@ const sidebarMapping = [
     name: "Messages",
     link: "/messages",
   },
+  {
+    name: "Driver",
+    link: "/driver",
+  },
 ];
 
 const renderLinks = () =>

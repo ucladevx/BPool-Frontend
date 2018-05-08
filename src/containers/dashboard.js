@@ -45,13 +45,13 @@ class Dashboard extends React.Component {
     await this.setState({
       selectedTrip: {
         seats: 3,
-        start_city: "Los Angeles",
-        end_city: "San Jose",
+        start_city: "UCLA",
+        end_city: "UCB",
         start_dest_lat: "1",
         start_dest_lon: "1",
         end_dest_lat: "2",
         end_dest_lon: "2",
-        price_per_seat: 20,
+        price_per_seat: 11,
         info:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at lectus sed odio ornare auctor ac eget massa. Aliquam erat volutpat. Donec placerat risus leo, vel aliquet neque venenatis nec. Sed pulvinar sed urna sagittis eleifend. Fusce quam libero, sagittis quis metus placerat, volutpat mattis mi. Cras sit amet metus tincidunt, tempus dui id, blandit urna. Sed ipsum nibh, dignissim nec enim sed, vehicula condimentum odio. Sed malesuada malesuada magna in dignissim. Ut pellentesque malesuada augue, ac convallis nunc ultrices sit amet. Phasellus laoreet, enim ut congue accumsan, leo mi gravida arcu, sed consectetur augue sem maximus augue. Curabitur sed vulputate justo, vel lacinia quam.",
       },
@@ -89,9 +89,10 @@ class Dashboard extends React.Component {
           <RideModal
             trip={selectedTrip}
             closeModal={this.closeModal}
-            driver={true}
+            visible={modalVisible}
           />
         )}
+        <h1> Upcoming Rides </h1>
         <ul>{upcomingCards}</ul>
       </div>
     );

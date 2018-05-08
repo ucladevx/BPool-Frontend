@@ -15,7 +15,7 @@ const Header = props => (
       </div>
     ) : (
       <div className="tab">
-        <Link to="/login">Login</Link>
+        <Link to="/register">Login</Link>
       </div>
     )}
   </div>
