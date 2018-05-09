@@ -49,11 +49,23 @@ const GetRideByID = id => {
 const CreateRide = ride => {
   return async dispatch => {
     try {
+      // TODO: currently hardcoding in car_id; we should either store it via redux or handle it on the backend
+      const newRide = {
+        ...ride,
+        seats: parseInt(ride.seats),
+        start_dest_lat: parseFloat(ride.start_dest_lat),
+        start_dest_lon: parseFloat(ride.start_dest_lon),
+        end_dest_lat: parseFloat(ride.end_dest_lat),
+        end_dest_lon: parseFloat(ride.end_dest_lon),
+        price_per_seat: parseInt(ride.price_per_seat),
+        car_id: "bbp86018qq98d54rj160",
+      };
+      console.log(newRide);
       const response = await fetch(API.ride.post, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
-        body: JSON.stringify(ride),
+        body: JSON.stringify(newRide),
       });
       const status = response.status;
       const { data, error } = await response.json();

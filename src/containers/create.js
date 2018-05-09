@@ -24,6 +24,7 @@ class CreatePanel extends React.Component {
         start_dest_lon: "",
         end_dest_lat: "",
         end_dest_lon: "",
+        start_date: "",
         price_per_seat: "",
         info: "",
       },
@@ -37,7 +38,7 @@ class CreatePanel extends React.Component {
   async geocode() {}
 
   async createRide() {
-    await this.geocode();
+    // await this.geocode();
     const { err } = await this.props.createRide(this.state.ride);
     if (err) {
       this.setState({ err });
@@ -49,12 +50,24 @@ class CreatePanel extends React.Component {
     this.props.changePage("/driver");
   }
 
+  handleChange = date => {
+    const newDate = Date.parse(date);
+    this.setState(prevState => ({
+      ...prevState,
+      ride: {
+        ...prevState.ride,
+        start_date: new Date(newDate).toISOString(),
+      },
+    }));
+  };
+
   render() {
     const {} = this.props;
     const { ride, err } = this.state;
     return (
       <div className="create container">
-        {/*<Row>
+        {err && <span> {err} </span>}
+        <Row>
           <Input
             m={12}
             label="Number of available seats"
@@ -75,12 +88,50 @@ class CreatePanel extends React.Component {
           />
           <Input
             m={12}
+            label="Start lat"
+            value={ride.start_dest_lat}
+            onChange={linkState(this, "ride.start_dest_lat")}
+          />
+          <Input
+            m={12}
+            label="Start lon"
+            value={ride.start_dest_lon}
+            onChange={linkState(this, "ride.start_dest_lon")}
+          />
+          <Input
+            m={12}
+            label="End lat"
+            value={ride.end_dest_lat}
+            onChange={linkState(this, "ride.end_dest_lat")}
+          />
+          <Input
+            m={12}
+            label="End lon"
+            value={ride.end_dest_lon}
+            onChange={linkState(this, "ride.end_dest_lon")}
+          />
+          <Input
+            m={12}
             label="Price per seat"
             value={ride.price_per_seat}
             onChange={linkState(this, "ride.price_per_seat")}
           />
-        </Row>*/}
-        <SelectInput
+          <Input
+            m={12}
+            label="Other info"
+            value={ride.info}
+            onChange={linkState(this, "ride.info")}
+          />
+        </Row>
+        <div className="input">
+          <i className="material-icons prefix">date_range</i>
+          <Input
+            placeholder="Date"
+            type="date"
+            onChange={(e, value) => this.handleChange(value)}
+          />
+        </div>
+        {/*<SelectInput
           materialIcon="person_pin"
           label="Origin"
           value={this.state.source}
@@ -98,15 +149,7 @@ class CreatePanel extends React.Component {
           options={cities}
         />
 
-        <div className="input">
-          <i className="material-icons prefix">date_range</i>
-          <Input
-            placeholder="Date"
-            type="date"
-            onChange={e => this.handleChange({ value: e.timeStamp }, "date")}
-          />
-        </div>
-
+        */}
         <Row>
           <Col m={2} offset="m2">
             <Link to="/driver">
