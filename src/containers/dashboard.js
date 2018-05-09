@@ -26,18 +26,30 @@ class Dashboard extends React.Component {
     this.listRides();
   }
 
-  async listRides() {
+  async listRides(limit, last) {
     // TODO fetch all trips
     // This is a call to a users previous rides
+    const { data, err } = await this.props.listRides(limit, last);
+    if (err) {
+      this.setState({
+        upcomingTrips: [],
+        err,
+      });
+      return;
+    }
     this.setState({
-      upcomingTrips: [
-        { date: "INSERT DATE HERE", start: "UCLA", dest: "UCB", price: 11 },
-        { date: "INSERT DATE HERE", start: "UCB", dest: "UCLA", price: 15 },
-      ],
-      pastTrips: [
-        { date: "INSERT DATE HERE", start: "UCB", dest: "UCLA", price: 5 },
-      ],
+      upcomingTrips: data,
+      err: false,
     });
+    // this.setState({
+    //   upcomingTrips: [
+    //     { date: "INSERT DATE HERE", start: "UCLA", dest: "UCB", price: 11 },
+    //     { date: "INSERT DATE HERE", start: "UCB", dest: "UCLA", price: 15 },
+    //   ],
+    //   pastTrips: [
+    //     { date: "INSERT DATE HERE", start: "UCB", dest: "UCLA", price: 5 },
+    //   ],
+    // });
   }
 
   async getRideByID(id) {
@@ -108,7 +120,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getRideByID: async id => await dispatch(GetRideByID(id)),
-    listRides: async () => await dispatch(ListRides()),
+    listRides: async (limit, last) => await dispatch(ListRides(limit, last)),
   };
 };
 

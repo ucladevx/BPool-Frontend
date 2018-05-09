@@ -1,6 +1,7 @@
 import API from "../config/api";
+import { formatStr } from "../config/utility";
 
-const ListRides = () => {
+const ListRides = (limit, last) => {
   return async dispatch => {
     try {
       const response = await fetch(API.ride.list, {
@@ -60,7 +61,6 @@ const CreateRide = ride => {
         price_per_seat: parseInt(ride.price_per_seat),
         car_id: "bbp86018qq98d54rj160",
       };
-      console.log(newRide);
       const response = await fetch(API.ride.post, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
