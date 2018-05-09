@@ -34,33 +34,59 @@ class DriverPanel extends React.Component {
     this.deleteRide = this.deleteRide.bind(this);
   }
 
-  async listRides() {
+  async listRides(limit, last) {
+    const { data, err } = await this.props.listRides(limit, 1);
+    if (err) {
+      this.setState({
+        trips: [],
+        err,
+      });
+      return;
+    }
     this.setState({
-      trips: [
-        { date: "INSERT DATE HERE", start: "UCLA", dest: "UCB", price: 11 },
-      ],
+      trips: data,
+      err: false,
     });
+    // this.setState({
+    //   trips: [
+    //     { date: "INSERT DATE HERE", start: "UCLA", dest: "UCB", price: 11 },
+    //   ],
+    // });
   }
 
   async getRideByID(id) {
+    // TODO: add get ride by ID endpoint
+    const { data, err } = await this.props.getRideByID(id);
+    if (err) {
+      this.setState({
+        selectedTrip: {},
+        err,
+      });
+      return;
+    }
     this.setState({
-      selectedTrip: {
-        seats: 3,
-        start_city: "UCLA",
-        end_city: "UCB",
-        start_dest_lat: "1",
-        start_dest_lon: "1",
-        end_dest_lat: "2",
-        end_dest_lon: "2",
-        price_per_seat: 11,
-        info:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at lectus sed odio ornare auctor ac eget massa. Aliquam erat volutpat. Donec placerat risus leo, vel aliquet neque venenatis nec. Sed pulvinar sed urna sagittis eleifend. Fusce quam libero, sagittis quis metus placerat, volutpat mattis mi. Cras sit amet metus tincidunt, tempus dui id, blandit urna. Sed ipsum nibh, dignissim nec enim sed, vehicula condimentum odio. Sed malesuada malesuada magna in dignissim. Ut pellentesque malesuada augue, ac convallis nunc ultrices sit amet. Phasellus laoreet, enim ut congue accumsan, leo mi gravida arcu, sed consectetur augue sem maximus augue. Curabitur sed vulputate justo, vel lacinia quam.",
-      },
-      modalVisible: true,
+      selectedTrip: data,
+      err: false,
     });
+    // this.setState({
+    //   selectedTrip: {
+    //     seats: 3,
+    //     start_city: "UCLA",
+    //     end_city: "UCB",
+    //     start_dest_lat: "1",
+    //     start_dest_lon: "1",
+    //     end_dest_lat: "2",
+    //     end_dest_lon: "2",
+    //     price_per_seat: 11,
+    //     info:
+    //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at lectus sed odio ornare auctor ac eget massa. Aliquam erat volutpat. Donec placerat risus leo, vel aliquet neque venenatis nec. Sed pulvinar sed urna sagittis eleifend. Fusce quam libero, sagittis quis metus placerat, volutpat mattis mi. Cras sit amet metus tincidunt, tempus dui id, blandit urna. Sed ipsum nibh, dignissim nec enim sed, vehicula condimentum odio. Sed malesuada malesuada magna in dignissim. Ut pellentesque malesuada augue, ac convallis nunc ultrices sit amet. Phasellus laoreet, enim ut congue accumsan, leo mi gravida arcu, sed consectetur augue sem maximus augue. Curabitur sed vulputate justo, vel lacinia quam.",
+    //   },
+    //   modalVisible: true,
+    // });
   }
 
   async updateRide() {
+    // TODO: add update ride endpoint
     const { err } = await this.props.updateRide(this.state.rideForm);
     if (err) {
       this.setState({ err });
@@ -72,6 +98,7 @@ class DriverPanel extends React.Component {
   }
 
   async deleteRide() {
+    // TODO: delete ride
     const { err } = await this.props.deleteRide(this.state.selectedRide.id);
     if (err) {
       this.setState({ err });
@@ -151,7 +178,7 @@ const mapDispatchToProps = dispatch => {
   return {
     deleteRide: async id => await dispatch(DeleteRide(id)),
     getRideByID: async id => await dispatch(GetRideByID(id)),
-    listRides: async () => await dispatch(ListRides()),
+    listRides: async (limit, last) => await dispatch(ListRides(limit, last)),
     updateRide: async ride => await dispatch(UpdateRide(ride)),
   };
 };

@@ -4,7 +4,7 @@ import { formatStr } from "../config/utility";
 const ListRides = (limit, last) => {
   return async dispatch => {
     try {
-      const response = await fetch(API.ride.list, {
+      const response = await fetch(formatStr(API.ride.list, limit, last), {
         method: "GET",
         credentials: "include",
       });
