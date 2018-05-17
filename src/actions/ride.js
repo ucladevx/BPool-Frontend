@@ -24,6 +24,29 @@ const ListRides = (limit, last) => {
   };
 };
 
+const ShowFeed = () => {
+  return async dispatch => {
+    try {
+      const response = await fetch(API.ride.feed, {
+        method: "GET",
+        credentials: "include",
+      });
+      const status = response.status;
+      const { data, error } = await response.json();
+      const err = status < 200 || status >= 300;
+      if (err) {
+        throw new Error(error);
+      } else {
+        return { err, data };
+      }
+    } catch (e) {
+      return {
+        err: e.message,
+      };
+    }
+  };
+};
+
 const GetRideByID = id => {
   return async dispatch => {
     try {
@@ -131,4 +154,4 @@ const DeleteRide = id => {
   };
 };
 
-export { CreateRide, DeleteRide, GetRideByID, ListRides, UpdateRide };
+export { CreateRide, DeleteRide, GetRideByID, ListRides, ShowFeed, UpdateRide };

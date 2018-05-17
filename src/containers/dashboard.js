@@ -4,7 +4,7 @@ import RideModal from "../components/Modal";
 
 import { connect } from "react-redux";
 
-import { GetRideByID, ListRides } from "../actions/ride";
+import { GetRideByID, ShowFeed } from "../actions/ride";
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -26,10 +26,10 @@ class Dashboard extends React.Component {
     this.listRides();
   }
 
-  async listRides(limit, last) {
+  async listRides() {
     // TODO fetch all trips
     // This is a call to a users previous rides
-    const { data, err } = await this.props.listRides(limit, last);
+    const { data, err } = await this.props.listRides();
     if (err) {
       this.setState({
         upcomingTrips: [],
@@ -64,6 +64,7 @@ class Dashboard extends React.Component {
     }
     this.setState({
       selectedTrip: data,
+      modalVisible: true,
       err: false,
     });
     // await this.setState({
@@ -98,10 +99,10 @@ class Dashboard extends React.Component {
     const upcomingCards = upcomingTrips.map((tripInfo, index) => (
       <div className="card-container" key={index}>
         <RideCard
-          date={tripInfo.date}
-          price={tripInfo.price}
-          start={tripInfo.start}
-          dest={tripInfo.dest}
+          date={tripInfo.start_date}
+          price={tripInfo.price_per_seat}
+          start={tripInfo.start_city}
+          dest={tripInfo.end_city}
           getByID={this.getRideByID}
           id={tripInfo.id}
         />
@@ -132,7 +133,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getRideByID: async id => await dispatch(GetRideByID(id)),
-    listRides: async (limit, last) => await dispatch(ListRides(limit, last)),
+    listRides: async () => await dispatch(ShowFeed()),
   };
 };
 

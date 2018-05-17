@@ -10,12 +10,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import linkState from "linkstate";
 
-import {
-  DeleteRide,
-  GetRideByID,
-  ListRides,
-  UpdateRide,
-} from "../actions/ride";
+import { DeleteRide, GetRideByID, ShowFeed, UpdateRide } from "../actions/ride";
 
 class DriverPanel extends React.Component {
   constructor(props) {
@@ -35,7 +30,7 @@ class DriverPanel extends React.Component {
   }
 
   async listRides(limit, last) {
-    const { data, err } = await this.props.listRides(limit, 1);
+    const { data, err } = await this.props.listRides();
     if (err) {
       this.setState({
         trips: [],
@@ -66,6 +61,7 @@ class DriverPanel extends React.Component {
     }
     this.setState({
       selectedTrip: data,
+      modalVisible: true,
       err: false,
     });
     // this.setState({
@@ -127,10 +123,10 @@ class DriverPanel extends React.Component {
     const tripCards = trips.map(tripInfo => (
       <li>
         <RideCard
-          date={tripInfo.date}
-          price={tripInfo.price}
-          start={tripInfo.start}
-          dest={tripInfo.dest}
+          date={tripInfo.start_date}
+          price={tripInfo.price_per_seat}
+          start={tripInfo.start_city}
+          dest={tripInfo.end_city}
           getByID={this.getRideByID}
           id={tripInfo.id}
         />
@@ -178,7 +174,7 @@ const mapDispatchToProps = dispatch => {
   return {
     deleteRide: async id => await dispatch(DeleteRide(id)),
     getRideByID: async id => await dispatch(GetRideByID(id)),
-    listRides: async (limit, last) => await dispatch(ListRides(limit, last)),
+    listRides: async () => await dispatch(ShowFeed()),
     updateRide: async ride => await dispatch(UpdateRide(ride)),
   };
 };

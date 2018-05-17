@@ -20,6 +20,7 @@ const API = {
   },
   ride: {
     list: ride_base,
+    feed: `${api_base}/feed`,
     show: `${ride_base}/`,
     post: ride_base,
     update: ride_base,
